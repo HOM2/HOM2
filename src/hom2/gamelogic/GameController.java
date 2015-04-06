@@ -20,7 +20,7 @@ import javafx.scene.control.Alert;
  * This class is responsible for displaying the game status and controlling the
  * game flow
  */
-public class Game {
+public class GameController {
 
     protected SceneController sceneController;
     protected NavigationController navController;
@@ -30,7 +30,7 @@ public class Game {
 
     protected GameCharacter hero;
 
-    public Game() {
+    public GameController() {
         this.sceneController = new SceneController();
         this.btlController = new BattleController();
         this.gameMap = new GameMap();

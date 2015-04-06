@@ -21,7 +21,7 @@ public class GameMap {
     protected long gridsY = GameSettings.getMapGridsY(); // Total grids in Y direction
     protected NavigationController navController;
     protected BattleController btlController;
-    protected Game gameController;
+    protected GameController gameController;
 
     // Constructer
     public GameMap() {

@@ -8,7 +8,7 @@ package hom2;
 import hom2.gamelogic.NavigationController;
 import hom2.gamelogic.BattleController;
 import hom2.gamelogic.CharacterFactory;
-import hom2.gamelogic.Game;
+import hom2.gamelogic.GameController;
 import hom2.gamelogic.GameMap;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -25,13 +25,13 @@ import javafx.stage.Stage;
  */
 public class HOM2 extends Application {
 
-    Game game = new Game();
+    GameController gameController = new GameController();
     
-    NavigationController navController = game.getNavController();
-    BattleController btlController = game.getBtlController(); // TODO: no need to new when there is set below
-    SceneController sceneController = game.getSceneController();
-    GameMap gameMap = game.getGameMap();
-    CharacterFactory characterFactory = game.getCharacterFactory();
+    NavigationController navController = gameController.getNavController();
+    BattleController btlController = gameController.getBtlController(); // TODO: no need to new when there is set below
+    SceneController sceneController = gameController.getSceneController();
+    GameMap gameMap = gameController.getGameMap();
+    CharacterFactory characterFactory = gameController.getCharacterFactory();
     
 
 
@@ -52,8 +52,8 @@ public class HOM2 extends Application {
         sceneController.setBattleController(btlController); 
 
         this.gameMap = new GameMap();
-        this.game = new Game();
-        this.navController = new NavigationController(sceneController, gameMap, this.btlController, this.game);
+        this.gameController = new GameController();
+        this.navController = new NavigationController(sceneController, gameMap, this.btlController, this.gameController);
 
         MainKeyHandler mainKeyHandler = new MainKeyHandler(navController);
         scene.setOnKeyPressed(mainKeyHandler);

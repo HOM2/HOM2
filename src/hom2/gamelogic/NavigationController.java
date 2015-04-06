@@ -15,7 +15,7 @@ public class NavigationController {
     protected SceneController sceneController;
     protected GameMap gameMap;
     protected BattleController btlController;
-    protected Game game;
+    protected GameController game;
     protected CharacterFactory characterFactory;
 
     protected Position heroPosition;
@@ -24,11 +24,11 @@ public class NavigationController {
         this.sceneController = new SceneController();
         this.gameMap = new GameMap();
         this.btlController = new BattleController();
-        this.game = new Game();
+        this.game = new GameController();
         this.characterFactory = new CharacterFactory();
     }
 
-    public NavigationController(SceneController sc, GameMap map, BattleController bc, Game gc) {
+    public NavigationController(SceneController sc, GameMap map, BattleController bc, GameController gc) {
         this.sceneController = sc;
         this.gameMap = map;
         this.btlController = bc;
