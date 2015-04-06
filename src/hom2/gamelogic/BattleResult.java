@@ -11,23 +11,19 @@ package hom2.gamelogic;
 public class BattleResult {
     
     protected boolean gameOver;
+    protected boolean victory;
+    protected boolean retreat;
     protected Position winnerPosition;
     protected Position loserPosition;
     
 
     public BattleResult(){
-    
+        this.winnerPosition = new Position();
+        this.loserPosition = new Position();
     }
     
     
     // Getters setters
-    public boolean isGameOver() {
-        return gameOver;
-    }
-
-    public void setGameOver(boolean gameOver) {
-        this.gameOver = gameOver;
-    }
 
     public Position getWinnerPosition() {
         return winnerPosition;
@@ -44,10 +40,32 @@ public class BattleResult {
     public void setLoserPosition(Position loserPosition) {
         this.loserPosition = loserPosition;
     }
-
-    boolean isRetreat() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public boolean isGameOver() {
+        return gameOver;
     }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
+    
+    public boolean isVictory() {
+        return victory;
+    }
+
+    public void setVictory(boolean victory) {
+        this.victory = victory;
+    }
+
+    public boolean isRetreat() {
+        return retreat;
+    }
+
+    public void setRetreat(boolean retreat) {
+        this.retreat = retreat;
+    }
+
+
     
 
 }

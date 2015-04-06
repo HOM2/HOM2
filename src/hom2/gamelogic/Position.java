@@ -5,9 +5,17 @@
 package hom2.gamelogic;
 
 /**
- *
+ * 
  * @author Alex
  */
+
+/**
+ * This class stores info of a coordinate (a Point) on the map, such as the occupant
+ * (the character etc), the visibility of the coordinate and potentially other info
+ * 
+ */
+
+
 
 import hom2.gamelogic.Characters.GameCharacter;
 import java.awt.Point;

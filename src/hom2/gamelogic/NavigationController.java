@@ -100,7 +100,9 @@ public class NavigationController {
                 game.gameOver();
             } else if (btlResult.isRetreat()) { //
 
-            } else {
+            } else if (btlResult.isVictory()){ // Won the battle
+            }else{
+                
             }
 
         }

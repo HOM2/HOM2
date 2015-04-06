@@ -4,6 +4,8 @@
  */
 package hom2.gamelogic;
 
+import hom2.SceneController;
+
 
 /**
  *
@@ -11,6 +13,7 @@ package hom2.gamelogic;
  */
 public class BattleController {
 
+    protected SceneController sceneController;
     
     public BattleController(){
     }
@@ -19,6 +22,23 @@ public class BattleController {
     // Init a battle. The Position class holds the character
     // We need the position to decide where should the winner go after battle
     public BattleResult battle(Position attackerPosition, Position defenderPosition){
+        
+        // Show the enemy
+        
+        
+        
+        // Prompt for action
+        
+        // Receive command from SceneController
+        
+        // Calculate action for result
+        
+        // Update status of characters
+        
+        
+        // Return the result
+        
+        
         return new BattleResult();
     }
     
