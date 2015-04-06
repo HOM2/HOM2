@@ -8,7 +8,7 @@ import hom2.gamelogic.NavigationController;
 import hom2.gamelogic.Position;
 import hom2.gamelogic.Weapons.Weapon;
 
-public class Warrior extends Character {
+public class Warrior extends GameCharacter {
 	//needs return methods to display what it is
 	private String type = "Warrior";
 	private Weapon currentWeapon;
@@ -48,7 +48,7 @@ public class Warrior extends Character {
 		return collectedWeapons;
 	}
 
-	public int healthPoints() { //Returns the current health points of the character
+	public int getHealthPoints() { //Returns the current health points of the character
 		return currentHealthPoints;	
 	}
 

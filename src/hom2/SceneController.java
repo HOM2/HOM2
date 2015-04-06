@@ -44,7 +44,7 @@ public class SceneController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // Init map
         mapView.setImage(mapImage);
-        Rectangle2D rec = new Rectangle2D(0, 0, GameSettings.MAP_WIDTH, GameSettings.MAP_HEIGHT);
+        Rectangle2D rec = new Rectangle2D(0, 0, GameSettings.getMapWidth(), GameSettings.getMapHeight());
         mapView.setViewport(rec);
 
         // Init hero
@@ -119,8 +119,6 @@ public class SceneController implements Initializable {
         long heroPositionOffset = (long) (GameSettings.GRID_SIZE * GameSettings.FIGURE_SCALE / 2);
         hero.setLayoutX(GameSettings.MAP_VIEW_SIZE / 2 - heroPositionOffset);
         hero.setLayoutY(GameSettings.MAP_VIEW_SIZE / 2 - heroPositionOffset);
-        
-        hero.
 
         // center the map
         mapPane.setVvalue(0.5);
