@@ -1,7 +1,7 @@
 package hom2.gamelogic;
 
-import hom2.GameSettings;
 import hom2.SceneController;
+import hom2.GameSettings;
 import hom2.gamelogic.Characters.*;
 import java.awt.Point;
 import javafx.scene.input.KeyCode;
@@ -11,32 +11,32 @@ import javafx.scene.input.KeyCode;
  * @author Alex
  */
 public class NavigationController {
+    
+    protected GameController gameController;
 
     protected SceneController sceneController;
     protected GameMap gameMap;
     protected BattleController btlController;
-    protected GameController gameController;
     protected CharacterFactory characterFactory;
 
     protected Position heroPosition;
 
     public NavigationController() {
-        this.sceneController = new SceneController();
-        this.gameMap = new GameMap();
-        this.btlController = new BattleController();
-        this.gameController = new GameController();
-        this.characterFactory = new CharacterFactory();
+//        this.sceneController = new SceneController();
+//        this.gameMap = new GameMap();
+//        this.btlController = new BattleController();
+//        this.gameController = new GameController();
     }
 
-    public NavigationController(SceneController sc, GameMap map, BattleController bc, GameController gc) {
-        this.sceneController = sc;
-        this.gameMap = map;
-        this.btlController = bc;
+    public NavigationController(GameController gc) {
         this.gameController = gc;
-        this.characterFactory = new CharacterFactory();
+        this.sceneController = gc.getSceneController();
+        this.gameMap = gc.getGameMap();
+        this.btlController = gc.getBtlController();
+        this.characterFactory = gc.getCharacterFactory();
 
         // Init the hero's position data (in the data store)
-        Point center = new Point((int) (GameSettings.getMapGridsX() - 1) / 2, (int) (GameSettings.getMapGridsY() - 1) / 2);
+        Point center = new Point((int) (GameSettings.getMapGridsX() - 1) / 2 + 1, (int) (GameSettings.getMapGridsY() - 1) / 2 + 1);
         Warrior hero = (Warrior) characterFactory.makeCharacter(GameSettings.CharacterType.WARRIOR);
         this.heroPosition = new Position(true, hero);
         this.heroPosition.setPoint(center);
@@ -47,19 +47,27 @@ public class NavigationController {
     public void move(KeyCode keyCode) {
         GameSettings.Direction d = GameSettings.DIRECTIONS.get(keyCode);
 
-        // Check with the map to see if move is possible
         // If get to the boundary, keep place and notify the user
         if (this.gameMap.isDirectonOutOfMap(heroPosition, d)) {
-            this.gameController.buzz(heroPosition.getPoint().toString());
+            this.gameController.buzz(heroPosition.getPoint().toString()); // TODO: use the GUI Status panel
+            return;
+        }
+
+        // If we've got here, we are in the boundary
+        // Check if there is an enemy in the moving-to position
+        Position enemy = this.gameController.getGameMap().getNeighbour(heroPosition, d);
+
+        if (enemy == null) {
+            // If moving to empty space, just move the map and the scene
+            updateCharacterPosition(heroPosition, d);
+            this.gameController.cmdFactoryScene.createMoveCommand(keyCode).execute();
+        }else{
+            // If encounter an enemy, initual a battle
+            this.gameController.buzz("Ran into enemy "+ enemy.toString());
             
         }
 
-        // If moving to empty space, just move the map and the scene
-        this.gameController.cmdFactoryScene.createMoveCommand(keyCode).execute();
-
-        updateCharacterPosition(heroPosition, d);
-        // If encounter an enemy, initual a battle
-        // Gets the battle result. If wins, move, else, gameController over anyway
+        // Gets the battle result. If wins, move, else, game over?
     }
 
     // Move the character from a position to another position, in the data structure
@@ -77,17 +85,12 @@ public class NavigationController {
             return;
         }
 
-        
-
         // Check for enemy
         Position enemy = this.gameMap.getNeighbour(currentPosition, d);
         if (enemy == null) {
             // Move the character to new position
             Position newPosition = gameMap.moveToNeighbour(currentPosition, d);
             this.heroPosition = newPosition;
-            // DEBUG:
-            this.gameController.buzz(heroPosition.getPoint().toString());
-
         } else { // 
             // NEXTVERSION:enemy identificaion
             // if the occupant is friendly, do nothing
@@ -98,9 +101,9 @@ public class NavigationController {
                 gameController.gameOver();
             } else if (btlResult.isRetreat()) { //
 
-            } else if (btlResult.isVictory()){ // Won the battle
-            }else{
-                
+            } else if (btlResult.isVictory()) { // Won the battle
+            } else {
+
             }
 
         }

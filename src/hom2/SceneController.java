@@ -2,6 +2,8 @@ package hom2;
 
 import hom2.gamelogic.BattleController;
 import hom2.gamelogic.NavigationController;
+import hom2.gamelogic.Position;
+import java.awt.Point;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.Interpolator;
@@ -36,6 +38,7 @@ public class SceneController implements Initializable {
     private final double MOVE_DURATION = GameSettings.CHARACTER_ANIMATION_DURATION;
     private final Image mapImage = GameSettings.MAP_IMAGE;
     private final Image heroImage = GameSettings.HERO_IMAGE;
+    private final Image dragonKnightImage = GameSettings.DRAGON_KNIGHT_IMAGE;
 
     protected NavigationController navController;
     protected BattleController btlController;
@@ -51,8 +54,17 @@ public class SceneController implements Initializable {
         hero.setImage(heroImage);
         hero.setFitHeight(GameSettings.GRID_SIZE * GameSettings.FIGURE_SCALE);
         hero.setFitWidth(GameSettings.GRID_SIZE * GameSettings.FIGURE_SCALE);
+        
+        displayHeroPosition( new Point((int)GameSettings.getMapGridsX()/2+1, (int)GameSettings.getMapGridsY()/2+1) );
 
     }
+    
+    public void displayHeroPosition(Point p){
+        String msg = (int)p.getX() + " : " + (int)p.getY() 
+                + " (" + GameSettings.getMapGridsX() + ":" + GameSettings.getMapGridsY() + ")";
+        this.heroCoordinates.setText( msg);
+    }
+    
 
     public void setNavController(NavigationController nc) {
         this.navController = nc;
@@ -123,7 +135,6 @@ public class SceneController implements Initializable {
         // center the map
         mapPane.setVvalue(0.5);
         mapPane.setHvalue(0.5);
-
     }
 
 }

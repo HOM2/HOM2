@@ -32,6 +32,10 @@ public class CmdSceneMove extends CmdScene {
         }
         else if(direction == Direction.RIGHT){
             this.gameController.getSceneController().moveRight();
-        }        
+        }
+        
+        this.gameController.getSceneController().displayHeroPosition(
+                this.gameController.getNavController().heroPosition.getPoint()
+        );
     }
 }

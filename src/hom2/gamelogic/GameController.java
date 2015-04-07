@@ -5,8 +5,6 @@
 package hom2.gamelogic;
 
 import hom2.GameSettings;
-import static hom2.GameSettings.GRID_SIZE;
-import static hom2.GameSettings.MAP_IMAGE;
 import hom2.SceneController;
 import hom2.gamelogic.Characters.GameCharacter;
 import javafx.scene.control.Alert;
@@ -18,7 +16,7 @@ import javafx.scene.control.Alert;
 /**
  *
  * This class is responsible for displaying the game status and controlling the
- * game flow
+ * game flow; also act as a mediator
  */
 public class GameController {
 
@@ -27,6 +25,7 @@ public class GameController {
     protected BattleController btlController;
     protected GameMap gameMap;
 
+    protected CharacterRepository characterRepo;
     protected CharacterFactory characterFactory;
 
     protected GameCharacter hero;
@@ -39,8 +38,9 @@ public class GameController {
         this.sceneController = new SceneController();
         this.btlController = new BattleController();
         this.gameMap = new GameMap();
-        this.navController = new NavigationController(sceneController, gameMap, btlController, this);
-        this.characterFactory = new CharacterFactory();
+        this.navController = new NavigationController();
+        this.characterRepo = new CharacterRepository();
+        this.characterFactory = new CharacterFactory(this);
         this.cmdFactoryScene = new CmdFactoryScene(this);
         this.cmdFactoryNav = new CmdFactoryNav(this);
         this.cmdFactoryBtl = new CmdFactoryBtl(this);
@@ -52,6 +52,17 @@ public class GameController {
 
     }
 
+    // Init the game, put characters on map
+    public void gameInit(){
+        GameCharacter c;
+        for (int i = 1; i<= GameSettings.MONSTER_NUMBER; i++){
+            c = this.characterFactory.makeCharacter(GameSettings.CharacterType.GRAGON_KNIGHT);
+            this.gameMap.addCharacterToRdmPosition(true, c);
+        }
+        buzz(this.gameMap.getOccupiedPositions().toString());
+    }
+    
+    
     
     
     // Notification 
@@ -163,6 +174,14 @@ public class GameController {
 
     public void setCmdBtlFactory(CmdFactoryBtl cmdBtlFactory) {
         this.cmdFactoryBtl = cmdBtlFactory;
+    }
+
+    public CharacterRepository getCharacterRepo() {
+        return characterRepo;
+    }
+
+    public void setCharacterRepo(CharacterRepository characterRepo) {
+        this.characterRepo = characterRepo;
     }
 
 

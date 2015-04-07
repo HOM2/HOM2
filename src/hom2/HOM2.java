@@ -8,6 +8,7 @@ package hom2;
 import hom2.gamelogic.NavigationController;
 import hom2.gamelogic.BattleController;
 import hom2.gamelogic.CharacterFactory;
+import hom2.gamelogic.CharacterRepository;
 import hom2.gamelogic.GameController;
 import hom2.gamelogic.GameMap;
 import javafx.application.Application;
@@ -25,13 +26,14 @@ import javafx.stage.Stage;
  */
 public class HOM2 extends Application {
 
-    GameController gameController = new GameController();
+    GameController gameController;
     
-    NavigationController navController = gameController.getNavController();
-    BattleController btlController = gameController.getBtlController(); // TODO: no need to new when there is set below
-    SceneController sceneController = gameController.getSceneController();
-    GameMap gameMap = gameController.getGameMap();
-    CharacterFactory characterFactory = gameController.getCharacterFactory();
+    NavigationController navController;
+    BattleController btlController;
+    SceneController sceneController;
+    GameMap gameMap;
+    CharacterRepository characterRepo;
+    CharacterFactory characterFactory;
      
 
     @Override
@@ -50,15 +52,25 @@ public class HOM2 extends Application {
         sceneController.setNavController(navController); 
         sceneController.setBattleController(btlController); 
 
-        this.gameMap = new GameMap();
+        // init program; connect the controllers
         this.gameController = new GameController();
-        this.navController = new NavigationController(sceneController, gameMap, this.btlController, this.gameController);
-
-        MainKeyHandler mainKeyHandler = new MainKeyHandler(navController);
-        scene.setOnKeyPressed(mainKeyHandler);
+        this.gameMap = new GameMap(gameController);
+        this.btlController = new BattleController();
+        this.characterRepo = new CharacterRepository();
+        this.characterFactory = new CharacterFactory(gameController);
+        this.navController = new NavigationController(gameController);
 
         gameController.setSceneController(sceneController);
         gameController.setNavController(navController);
+        gameController.setBtlController(btlController);
+        gameController.setCharacterRepo(characterRepo);
+        gameController.setCharacterFactory(characterFactory);
+        gameController.setGameMap(gameMap);
+        
+        gameController.gameInit();
+        
+        MainKeyHandler mainKeyHandler = new MainKeyHandler(navController);
+        scene.setOnKeyPressed(mainKeyHandler);
         
         stage.show();
         sceneController.initMap();

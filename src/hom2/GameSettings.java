@@ -41,11 +41,17 @@ public class GameSettings {
     
     // Character Images
     public final static String HERO_IMAGE_FILE = "/assets/warrior.png";
+    public final static String DRAGON_KNIGHT_IMAGE_FILE = "/assets/monster.png";
     public final static Image HERO_IMAGE = new Image(HERO_IMAGE_FILE, false);
+    public final static Image DRAGON_KNIGHT_IMAGE = new Image(DRAGON_KNIGHT_IMAGE_FILE, false);
+    
     public final static double FIGURE_SCALE = 0.6; // to reduce the size of character figure and make fit in the grid easier
     
     // Character types
     public static enum CharacterType {WARRIOR, DRAGON, GRAGON_KNIGHT, DRAKE, MINION};
+    
+    // Monster numbers
+    public final static int MONSTER_NUMBER = 10;
     
     // Animations
     public final static double CHARACTER_ANIMATION_DURATION = 500;

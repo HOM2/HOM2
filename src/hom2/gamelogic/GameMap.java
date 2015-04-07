@@ -5,6 +5,8 @@
 package hom2.gamelogic;
 
 import hom2.GameSettings;
+import hom2.Helpers;
+import hom2.gamelogic.Characters.GameCharacter;
 import java.awt.Point;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,13 +21,49 @@ public class GameMap {
 
     protected long gridsX = GameSettings.getMapGridsX(); // Total grids in X direction
     protected long gridsY = GameSettings.getMapGridsY(); // Total grids in Y direction
-    protected NavigationController navController;
-    protected BattleController btlController;
     protected GameController gameController;
 
-    // Constructer
+    // Constructers
     public GameMap() {
         this.occupiedPositions = new HashMap<>();
+    }
+
+    public GameMap(GameController gc) {
+        this.occupiedPositions = new HashMap<>();
+        this.gameController = gc;
+    }
+
+    // Put a character on a position
+    public Position addCharacterToRdmPosition( boolean isVisible, GameCharacter c) {
+        if (c == null) {
+            return null;
+        }
+
+        // Generate a random new point
+        
+        boolean isNewPoint = false;
+        Point newPoint = new Point(0,0);
+
+        int totalGrids = (int) (GameSettings.getMapGridsX() * GameSettings.getMapGridsY());
+        
+        for (int i =1; i<= totalGrids && !isNewPoint; i++) {
+            int x = Helpers.randInt(1, (int) GameSettings.getMapGridsX());
+            int y = Helpers.randInt(1, (int) GameSettings.getMapGridsY());
+            newPoint.setLocation(x,y);
+            if (!this.occupiedPositions.containsKey(newPoint)){
+                isNewPoint = true;
+            }
+        }
+        
+        if (!isNewPoint){// If the map is full
+            return null;
+        }else{
+            Position newPosition = new Position(isVisible, c);
+            newPosition.setPoint(newPoint);
+            this.getMap().put(newPoint, newPosition);
+            return newPosition;
+        }
+        
     }
 
     // Get the neighbouring position
@@ -55,31 +93,32 @@ public class GameMap {
     }
 
     // Get the neighbouring position
-    public Position moveToNeighbour(Position p, GameSettings.Direction d) {
-        if (isDirectonOutOfMap(p, d)) {
+    public Position moveToNeighbour(Position currentPosition, GameSettings.Direction d) {
+        if (isDirectonOutOfMap(currentPosition, d)) {
             return null;
         }
 
         Point newPoint = new Point(0, 0);
         if (d == GameSettings.Direction.DOWN) {
-            newPoint.setLocation(p.getPoint().getX(), p.getPoint().getY() + 1);
+            newPoint.setLocation(currentPosition.getPoint().getX(), currentPosition.getPoint().getY() + 1);
         } else if (d == GameSettings.Direction.UP) {
-            newPoint.setLocation(p.getPoint().getX(), p.getPoint().getY() - 1);
+            newPoint.setLocation(currentPosition.getPoint().getX(), currentPosition.getPoint().getY() - 1);
         } else if (d == GameSettings.Direction.LEFT) {
-            newPoint.setLocation(p.getPoint().getX() - 1, p.getPoint().getY());
+            newPoint.setLocation(currentPosition.getPoint().getX() - 1, currentPosition.getPoint().getY());
         } else if (d == GameSettings.Direction.RIGHT) {
-            newPoint.setLocation(p.getPoint().getX() + 1, p.getPoint().getY());
+            newPoint.setLocation(currentPosition.getPoint().getX() + 1, currentPosition.getPoint().getY());
         }
 
         Position newPosition = new Position();
-        newPosition.setCharacter(p.getCharacter());
-        newPosition.setVisible(p.isVisible());
+        newPosition.setCharacter(currentPosition.getCharacter());
+        newPosition.setVisible(currentPosition.isVisible());
         newPosition.setPoint(newPoint);
         this.getMap().put(newPoint, newPosition);
-        
-        this.getMap().remove(p.getPoint());
+
+        this.getMap().remove(currentPosition.getPoint());
 
         return newPosition;
+
     }
 
     public boolean isDirectonOccupied(Position p, GameSettings.Direction d) {
@@ -136,6 +175,18 @@ public class GameMap {
 
     public Map<Point, Position> getMap() {
         return occupiedPositions;
+    }
+
+    public Map<Point, Position> getOccupiedPositions() {
+        return getMap();
+    }
+
+    public GameController getGameController() {
+        return gameController;
+    }
+
+    public void setGameController(GameController gameController) {
+        this.gameController = gameController;
     }
 
 }

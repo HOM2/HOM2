@@ -14,10 +14,7 @@
                <children>
                   <TitledPane animated="false" text="Status">
                     <content>
-                      <AnchorPane focusTraversable="true" minHeight="0.0" minWidth="0.0" prefHeight="180.0">
-                           <children>
-                              <Label fx:id="heroCoordinates" layoutX="14.0" layoutY="14.0" text="Label" />
-                           </children></AnchorPane>
+                      <AnchorPane focusTraversable="true" minHeight="0.0" minWidth="0.0" prefHeight="180.0" />
                     </content>
                   </TitledPane>
                   <TitledPane animated="false" prefHeight="120.0" text="Actions">
@@ -118,6 +115,15 @@
                                  </rowConstraints>
                               </GridPane>
                            </children></AnchorPane>
+                    </content>
+                  </TitledPane>
+                  <TitledPane animated="false" text="Position">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="heroCoordinates" layoutX="14.0" layoutY="14.0" text="Label" />
+                           </children>
+                        </AnchorPane>
                     </content>
                   </TitledPane>
                </children>
