@@ -15,7 +15,7 @@ public class NavigationController {
     protected SceneController sceneController;
     protected GameMap gameMap;
     protected BattleController btlController;
-    protected GameController game;
+    protected GameController gameController;
     protected CharacterFactory characterFactory;
 
     protected Position heroPosition;
@@ -24,7 +24,7 @@ public class NavigationController {
         this.sceneController = new SceneController();
         this.gameMap = new GameMap();
         this.btlController = new BattleController();
-        this.game = new GameController();
+        this.gameController = new GameController();
         this.characterFactory = new CharacterFactory();
     }
 
@@ -32,7 +32,7 @@ public class NavigationController {
         this.sceneController = sc;
         this.gameMap = map;
         this.btlController = bc;
-        this.game = gc;
+        this.gameController = gc;
         this.characterFactory = new CharacterFactory();
 
         // Init the hero's position data (in the data store)
@@ -50,18 +50,16 @@ public class NavigationController {
         // Check with the map to see if move is possible
         // If get to the boundary, keep place and notify the user
         if (this.gameMap.isDirectonOutOfMap(heroPosition, d)) {
-            this.game.buzz(heroPosition.getPoint().toString());
+            this.gameController.buzz(heroPosition.getPoint().toString());
             
         }
 
         // If moving to empty space, just move the map and the scene
-        Cmd_Scene_Move sceneMoveCmd
-                = new Cmd_Scene_Move(this.sceneController, d);
-        sceneMoveCmd.execute();
+        this.gameController.cmdFactoryScene.createMoveCommand(keyCode).execute();
 
         updateCharacterPosition(heroPosition, d);
         // If encounter an enemy, initual a battle
-        // Gets the battle result. If wins, move, else, game over anyway
+        // Gets the battle result. If wins, move, else, gameController over anyway
     }
 
     // Move the character from a position to another position, in the data structure
@@ -88,7 +86,7 @@ public class NavigationController {
             Position newPosition = gameMap.moveToNeighbour(currentPosition, d);
             this.heroPosition = newPosition;
             // DEBUG:
-            this.game.buzz(heroPosition.getPoint().toString());
+            this.gameController.buzz(heroPosition.getPoint().toString());
 
         } else { // 
             // NEXTVERSION:enemy identificaion
@@ -97,7 +95,7 @@ public class NavigationController {
             // if is enemy, fight
             BattleResult btlResult = btlController.battle(currentPosition, enemy);
             if (btlResult.isGameOver()) {
-                game.gameOver();
+                gameController.gameOver();
             } else if (btlResult.isRetreat()) { //
 
             } else if (btlResult.isVictory()){ // Won the battle

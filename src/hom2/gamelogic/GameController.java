@@ -26,9 +26,14 @@ public class GameController {
     protected NavigationController navController;
     protected BattleController btlController;
     protected GameMap gameMap;
+
     protected CharacterFactory characterFactory;
 
     protected GameCharacter hero;
+
+    protected CmdFactoryScene cmdFactoryScene;
+    protected CmdFactoryNav cmdFactoryNav;
+    protected CmdFactoryBtl cmdFactoryBtl;
 
     public GameController() {
         this.sceneController = new SceneController();
@@ -36,13 +41,32 @@ public class GameController {
         this.gameMap = new GameMap();
         this.navController = new NavigationController(sceneController, gameMap, btlController, this);
         this.characterFactory = new CharacterFactory();
+        this.cmdFactoryScene = new CmdFactoryScene(this);
+        this.cmdFactoryNav = new CmdFactoryNav(this);
+        this.cmdFactoryBtl = new CmdFactoryBtl(this);
+        
     }
 
-// End the game
+    // End the game
     public void gameOver() {
 
     }
 
+    
+    
+    // Notification 
+    public void buzz(String title, String msg) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(title);
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
+    public void buzz(String msg) {
+        buzz("", msg);
+    }
+    
+    
     // Getters setters
     public CharacterFactory getCharacterFactory() {
         return characterFactory;
@@ -68,10 +92,35 @@ public class GameController {
         this.btlController = btlController;
     }
 
+    public CmdFactoryScene getCmdFactoryScene() {
+        return cmdFactoryScene;
+    }
+
+    public void setCmdFactoryScene(CmdFactoryScene cmdFactoryScene) {
+        this.cmdFactoryScene = cmdFactoryScene;
+    }
+
+    public CmdFactoryNav getCmdFactoryNav() {
+        return cmdFactoryNav;
+    }
+
+    public void setCmdFactoryNav(CmdFactoryNav cmdFactoryNav) {
+        this.cmdFactoryNav = cmdFactoryNav;
+    }
+
+    public CmdFactoryBtl getCmdFactoryBtl() {
+        return cmdFactoryBtl;
+    }
+
+    public void setCmdFactoryBtl(CmdFactoryBtl cmdFactoryBtl) {
+        this.cmdFactoryBtl = cmdFactoryBtl;
+    }
+
+
     public GameMap getGameMap() {
         return gameMap;
     }
-
+    
     public void setGameMap(GameMap gameMap) {
         this.gameMap = gameMap;
     }
@@ -92,13 +141,29 @@ public class GameController {
         this.hero = hero;
     }
 
-    public void buzz(String msg) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText("Look, an Information Dialog");
-        alert.setContentText(msg);
-
-        alert.showAndWait();
+    public CmdFactoryScene getCmdSceneFactory() {
+        return cmdFactoryScene;
     }
+
+    public void setCmdSceneFactory(CmdFactoryScene cmdSceneFactory) {
+        this.cmdFactoryScene = cmdSceneFactory;
+    }
+
+    public CmdFactoryNav getCmdNavFactory() {
+        return cmdFactoryNav;
+    }
+
+    public void setCmdNavFactory(CmdFactoryNav cmdNavFactory) {
+        this.cmdFactoryNav = cmdNavFactory;
+    }
+
+    public CmdFactoryBtl getCmdBtlFactory() {
+        return cmdFactoryBtl;
+    }
+
+    public void setCmdBtlFactory(CmdFactoryBtl cmdBtlFactory) {
+        this.cmdFactoryBtl = cmdBtlFactory;
+    }
+
 
 }

@@ -45,16 +45,14 @@ public class GameSettings {
     public final static double FIGURE_SCALE = 0.6; // to reduce the size of character figure and make fit in the grid easier
     
     // Character types
-    public enum CharacterType {WARRIOR, DRAGON, GRAGON_KNIGHT, DRAKE, MINION};
-    
-    
+    public static enum CharacterType {WARRIOR, DRAGON, GRAGON_KNIGHT, DRAKE, MINION};
     
     // Animations
     public final static double CHARACTER_ANIMATION_DURATION = 500;
     
     // Controls
     // Keys
-    public enum Direction {UP, DOWN, LEFT, RIGHT};
+    public static enum Direction {UP, DOWN, LEFT, RIGHT};
     
     public final static Map<KeyCode, Direction> DIRECTIONS;
     static{

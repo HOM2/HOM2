@@ -2,70 +2,82 @@ package hom2.gamelogic.Characters;
 
 import java.util.ArrayList;
 
-import hom2.gamelogic.BattleController;
-import hom2.gamelogic.NavigationController;
 import hom2.gamelogic.Weapons.Weapon;
 
-public abstract class GameCharacter { //Template
-    
+public abstract class GameCharacter implements Subject { //Template; implements Subject so the observer can use the Template character
+
     protected int id;
-    protected int healthPoints;
     
-    
-    boolean characterMoves() {
-        return false;
+    public abstract boolean isEnemyOf(Character ch);
+
+    public abstract void collectWeapon(Weapon w);
+
+    public abstract boolean isAlive();
+
+    public abstract void setIsAlive(boolean b);
+
+    public abstract long getAttackPower();
+
+    public abstract long getHealthIncreasement();
+
+    public abstract String getName();
+
+    public abstract void setName(String n);
+
+    public enum characters { //Not sure how you want the enum
+
+        Warrior {
+                    public String getType() {
+                        return "Warrior";
+                    }
+                },
+        Dragon {
+                    public String getType() {
+                        return "Dragon";
+                    }
+                },
+        DragonKnight {
+                    public String getType() {
+                        return "Dragon Knight";
+                    }
+                },
+        Drakes {
+                    public String getType() {
+                        return "Drake";
+                    }
+                }
     }
 
-    boolean characterOpensItemMenu() {
-        return false;
-    }
+    public abstract String getType();
 
-    boolean characterAttacks() {
-        return false;
-    }
+    public abstract long getTeamNumber();
 
-    boolean characterRetreats() {
-        return false;
-    }
+    public abstract void setTeamNumber(long num);
 
-    boolean characterHeals() {
-        return false;
-    }
+    public abstract Boolean isBoss();
 
-    public abstract String position();
+    public abstract void setIsBoss(boolean b);
 
-    public abstract String weaponEquippedNames();
-
-    public abstract int weaponEquippedAttackPower();
+    public abstract long healthPoints();
 
     public abstract ArrayList<Weapon> collectedPowerUps();
 
-    public abstract int getHealthPoints();
-    
+    public abstract String weaponEquippedNames();
 
-    public abstract String characterName();
-
-    public abstract void addWeaponPowerUp(Weapon powerUps);
-
-    public abstract NavigationController navigationController();
-
-    public abstract BattleController battleController();
+    public abstract String powerUpDrop();
 
     // Added by Yiqi. Required.
     // A character need an Id, to implement the Repository pattern
-    public int getId(){return this.id;}
-    public void setId(int id){this.id = id;}
-    public void setHealthPoints(int hp){this.healthPoints = hp;}
-    public boolean equal(GameCharacter c){return this.getId() == c.getId();}
-    
-    // DEBUG: Added by Yiqi, temporarily.
-    public boolean isAlive() {
-        return true;
+    public int getId() {
+        return this.id;
     }
 
-    ;
-        public void setIsAlive(boolean v) {
+    public void setId(int id) {
+        this.id = id;
     }
-;
 
+
+    public boolean equal(GameCharacter c) {
+        return this.getId() == c.getId();
+    }
 }

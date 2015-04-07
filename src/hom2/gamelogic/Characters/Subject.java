@@ -1,4 +1,4 @@
-package hom2.gamelogic.Enemies;
+package hom2.gamelogic.Characters;
 
 public interface Subject {
 	public void registerObserverMinion(ObserverMinion o);

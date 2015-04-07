@@ -32,8 +32,7 @@ public class HOM2 extends Application {
     SceneController sceneController = gameController.getSceneController();
     GameMap gameMap = gameController.getGameMap();
     CharacterFactory characterFactory = gameController.getCharacterFactory();
-    
-
+     
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -58,6 +57,9 @@ public class HOM2 extends Application {
         MainKeyHandler mainKeyHandler = new MainKeyHandler(navController);
         scene.setOnKeyPressed(mainKeyHandler);
 
+        gameController.setSceneController(sceneController);
+        gameController.setNavController(navController);
+        
         stage.show();
         sceneController.initMap();
 
@@ -76,8 +78,10 @@ public class HOM2 extends Application {
         @Override
         public void handle(KeyEvent event) {
             KeyCode keyCode = event.getCode();
-
-            navController.move(keyCode);
+//            navController.move(keyCode);
+            
+            gameController.getCmdFactoryNav().createMoveCommand(keyCode).execute();
+            
         }
     }
 
