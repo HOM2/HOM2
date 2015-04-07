@@ -54,7 +54,7 @@ public class GameSettings {
     public final static int MONSTER_NUMBER = 10;
     
     // Animations
-    public final static double CHARACTER_ANIMATION_DURATION = 500;
+    public final static double CHARACTER_ANIMATION_DURATION = 100;
     
     // Controls
     // Keys

@@ -49,7 +49,7 @@ public class NavigationController {
 
         // If get to the boundary, keep place and notify the user
         if (this.gameMap.isDirectonOutOfMap(heroPosition, d)) {
-            this.gameController.buzz(heroPosition.getPoint().toString()); // TODO: use the GUI Status panel
+            this.gameController.buzz("Your mind is free but the world is small buddy!");
             return;
         }
 
@@ -63,7 +63,11 @@ public class NavigationController {
             this.gameController.cmdFactoryScene.createMoveCommand(keyCode).execute();
         }else{
             // If encounter an enemy, initual a battle
-            this.gameController.buzz("Ran into enemy "+ enemy.toString());
+            String msg = "";
+            msg += "Encounter with enemy ";
+            msg += enemy.getCharacter().getName();
+            msg += ".";
+            this.gameController.buzz(msg, "Get ready for battle!");
             
         }
 

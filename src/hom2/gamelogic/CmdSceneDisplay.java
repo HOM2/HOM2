@@ -4,24 +4,28 @@
  */
 package hom2.gamelogic;
 
-import hom2.GameSettings;
 
 /**
  *
  * @author Alex
  */
 public class CmdSceneDisplay extends CmdScene {
+    public static enum MsgType{DIALOG, STATUS, POSITION, BG_INFO}
     protected String msg;
-    static enum MsgType{DIALOG, STATUS, POSITION}
+    protected MsgType msgType;
     
-    public CmdSceneDisplay(GameController gc, String msg) {
+    public CmdSceneDisplay(GameController gc, MsgType t, String msg) {
         this.gameController = gc; // Inherited
         this.msg = msg;
+        this.msgType = t;
     }
 
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (this.msgType == MsgType.BG_INFO){
+            this.gameController.getSceneController().displayBgInfo(msg);
+        }
+    
     }
 
 }

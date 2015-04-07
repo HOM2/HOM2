@@ -86,13 +86,16 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextArea layoutX="64.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <TextArea disable="true" focusTraversable="false" layoutX="64.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children></AnchorPane>
                     </content>
                   </TitledPane>
-                  <TitledPane animated="false" text="Map">
+                  <TitledPane animated="false" text="Warrior Location">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="heroCoordinates" layoutX="14.0" layoutY="14.0" text="Label" />
+                           </children></AnchorPane>
                     </content>
                   </TitledPane>
                   <TitledPane animated="false" text="Game">
@@ -117,11 +120,11 @@
                            </children></AnchorPane>
                     </content>
                   </TitledPane>
-                  <TitledPane animated="false" text="Position">
+                  <TitledPane animated="false" prefHeight="300.0" text="Background Info">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Label fx:id="heroCoordinates" layoutX="14.0" layoutY="14.0" text="Label" />
+                              <TextArea fx:id="bgInfo" disable="true" editable="false" focusTraversable="false" layoutX="-9.0" layoutY="-47.0" prefHeight="300.0" prefWidth="200.0" style="-fx-opacity: 1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                     </content>

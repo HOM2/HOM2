@@ -94,6 +94,7 @@ public class HOM2 extends Application {
             
             gameController.getCmdFactoryNav().createMoveCommand(keyCode).execute();
             
+            event.consume();
         }
     }
 

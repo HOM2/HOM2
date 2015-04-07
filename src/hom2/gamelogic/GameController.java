@@ -7,6 +7,8 @@ package hom2.gamelogic;
 import hom2.GameSettings;
 import hom2.SceneController;
 import hom2.gamelogic.Characters.GameCharacter;
+import java.awt.Point;
+import java.util.Map.Entry;
 import javafx.scene.control.Alert;
 
 /**
@@ -44,7 +46,7 @@ public class GameController {
         this.cmdFactoryScene = new CmdFactoryScene(this);
         this.cmdFactoryNav = new CmdFactoryNav(this);
         this.cmdFactoryBtl = new CmdFactoryBtl(this);
-        
+
     }
 
     // End the game
@@ -53,18 +55,26 @@ public class GameController {
     }
 
     // Init the game, put characters on map
-    public void gameInit(){
+    public void gameInit() {
         GameCharacter c;
-        for (int i = 1; i<= GameSettings.MONSTER_NUMBER; i++){
+        for (int i = 1; i <= GameSettings.MONSTER_NUMBER; i++) {
             c = this.characterFactory.makeCharacter(GameSettings.CharacterType.GRAGON_KNIGHT);
             this.gameMap.addCharacterToRdmPosition(true, c);
         }
-        buzz(this.gameMap.getOccupiedPositions().toString());
+
+        String enemyList = "";
+        for (Entry<Point, Position> e : this.gameMap.getOccupiedPositions().entrySet()) {
+            enemyList += ("[" + (int)e.getKey().getX() + "," + (int)e.getKey().getY() + "] ");
+            enemyList += e.getValue().getCharacter().getName();
+            enemyList += "\n";
+        }
+
+        CmdSceneDisplay cmdSD = new CmdSceneDisplay(this,
+                CmdSceneDisplay.MsgType.BG_INFO,
+                enemyList);
+        cmdSD.execute();
     }
-    
-    
-    
-    
+
     // Notification 
     public void buzz(String title, String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -73,11 +83,11 @@ public class GameController {
         alert.setContentText(msg);
         alert.showAndWait();
     }
+
     public void buzz(String msg) {
         buzz("", msg);
     }
-    
-    
+
     // Getters setters
     public CharacterFactory getCharacterFactory() {
         return characterFactory;
@@ -127,11 +137,10 @@ public class GameController {
         this.cmdFactoryBtl = cmdFactoryBtl;
     }
 
-
     public GameMap getGameMap() {
         return gameMap;
     }
-    
+
     public void setGameMap(GameMap gameMap) {
         this.gameMap = gameMap;
     }
@@ -183,6 +192,5 @@ public class GameController {
     public void setCharacterRepo(CharacterRepository characterRepo) {
         this.characterRepo = characterRepo;
     }
-
 
 }

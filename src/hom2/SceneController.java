@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -32,6 +33,8 @@ public class SceneController implements Initializable {
     private ScrollPane mapPane;
     @FXML
     private Label heroCoordinates;
+    @FXML
+    private TextArea bgInfo;
 
     // game settings
     private final long STEP_LENGTH = GameSettings.GRID_SIZE;
@@ -65,6 +68,11 @@ public class SceneController implements Initializable {
         this.heroCoordinates.setText( msg);
     }
     
+    
+    public void displayBgInfo(String msg){
+        this.bgInfo.setText(msg);
+    }
+    
 
     public void setNavController(NavigationController nc) {
         this.navController = nc;
@@ -74,55 +82,56 @@ public class SceneController implements Initializable {
         this.btlController = bc;
     }
 
+    boolean transitionFinished = false;
     @FXML
     public void moveUp() {
-        TranslateTransition transTransitionUp;
-        transTransitionUp = TranslateTransitionBuilder.create()
+        TranslateTransition transTransition;
+        transTransition = TranslateTransitionBuilder.create()
                 .duration(new Duration(MOVE_DURATION))
                 .node(mapView)
                 .byY(+STEP_LENGTH)
                 .interpolator(Interpolator.LINEAR)
                 .build();
-        transTransitionUp.play();
+        transTransition.play();
     }
 
     @FXML
     public void moveDown() {
-        TranslateTransition transTransitionUp;
-        transTransitionUp = TranslateTransitionBuilder.create()
+        TranslateTransition transTransition;
+        transTransition = TranslateTransitionBuilder.create()
                 .duration(new Duration(MOVE_DURATION))
                 .node(mapView)
                 .byY(-STEP_LENGTH)
                 .cycleCount(1)
                 .interpolator(Interpolator.LINEAR)
                 .build();
-        transTransitionUp.play();
+        transTransition.play();
     }
 
     @FXML
     public void moveLeft() {
-        TranslateTransition transTransitionUp;
-        transTransitionUp = TranslateTransitionBuilder.create()
+        TranslateTransition transTransition;
+        transTransition = TranslateTransitionBuilder.create()
                 .duration(new Duration(MOVE_DURATION))
                 .node(mapView)
                 .byX(+STEP_LENGTH)
                 .cycleCount(1)
                 .interpolator(Interpolator.LINEAR)
                 .build();
-        transTransitionUp.play();
+        transTransition.play();
     }
 
     @FXML
     public void moveRight() {
-        TranslateTransition transTransitionUp;
-        transTransitionUp = TranslateTransitionBuilder.create()
+        TranslateTransition transTransition;
+        transTransition = TranslateTransitionBuilder.create()
                 .duration(new Duration(MOVE_DURATION))
                 .node(mapView)
                 .byX(-STEP_LENGTH)
                 .cycleCount(1)
                 .interpolator(Interpolator.LINEAR)
                 .build();
-        transTransitionUp.play();
+        transTransition.play();
     }
 
     @FXML
