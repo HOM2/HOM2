@@ -24,7 +24,7 @@ public abstract class GameCharacter implements Subject { //Template; implements 
 
     public abstract void setName(String n);
 
-    public static enum CharacterType { Warrior, Dragon, Dragon_Knight, Drakes }
+    public static enum CharacterType { WARRIOR, DRAGON, DRAGON_KNIGHT, DRAKES }
 
     public abstract CharacterType getType();
 

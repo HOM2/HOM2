@@ -90,7 +90,7 @@ public class Drake extends GameCharacter implements ObserverMinion {
     }
 
     public CharacterType getType() {
-        return CharacterType.Drakes;
+        return CharacterType.DRAKES;
     }
 
     public long getTeamNumber() {

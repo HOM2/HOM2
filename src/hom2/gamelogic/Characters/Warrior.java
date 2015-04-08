@@ -79,7 +79,7 @@ public class Warrior extends GameCharacter {
 	}
 
 	public CharacterType getType() {
-		return CharacterType.Warrior;
+		return CharacterType.WARRIOR;
 	}
 
 	public long getTeamNumber() {

@@ -88,7 +88,7 @@ public class DragonKnight extends GameCharacter {
 	}
 
 	public CharacterType getType() {
-		return CharacterType.Dragon_Knight;
+		return CharacterType.DRAGON_KNIGHT;
 	}
 
 	public Boolean isBoss() {

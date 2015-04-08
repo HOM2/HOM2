@@ -90,7 +90,7 @@ public class Dragon extends GameCharacter implements Subject {
 	}
 
 	public CharacterType getType() {
-		return CharacterType.Dragon;
+		return CharacterType.DRAGON;
 	}
 
 	public Boolean isBoss() {
