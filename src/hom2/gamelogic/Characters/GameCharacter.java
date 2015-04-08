@@ -24,7 +24,7 @@ public abstract class GameCharacter implements Subject { //Template; implements 
 
     public abstract void setName(String n);
 
-    public enum CharacterType { Warrior, Dragon, Dragon_Knight, Drakes }
+    public static enum CharacterType { Warrior, Dragon, Dragon_Knight, Drakes }
 
     public abstract CharacterType getType();
 
@@ -45,7 +45,7 @@ public abstract class GameCharacter implements Subject { //Template; implements 
     public abstract String powerUpDrop();
 
     // Added by Yiqi. Required.
-    // A character need an Id, to implement the Repository pattern
+    // A character needs an Id, to implement the Repository pattern
     public int getId() {
         return this.id;
     }
