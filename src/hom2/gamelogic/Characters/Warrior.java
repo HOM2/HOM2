@@ -78,8 +78,8 @@ public class Warrior extends GameCharacter {
 		name = n;
 	}
 
-	public String getType() {
-		return characters.Warrior.toString();
+	public CharacterType getType() {
+		return CharacterType.Warrior;
 	}
 
 	public long getTeamNumber() {

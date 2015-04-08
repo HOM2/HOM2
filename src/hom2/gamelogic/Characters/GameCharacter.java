@@ -24,31 +24,9 @@ public abstract class GameCharacter implements Subject { //Template; implements 
 
     public abstract void setName(String n);
 
-    public enum characters { //Not sure how you want the enum
+    public enum CharacterType { Warrior, Dragon, Dragon_Knight, Drakes }
 
-        Warrior {
-                    public String getType() {
-                        return "Warrior";
-                    }
-                },
-        Dragon {
-                    public String getType() {
-                        return "Dragon";
-                    }
-                },
-        DragonKnight {
-                    public String getType() {
-                        return "Dragon Knight";
-                    }
-                },
-        Drakes {
-                    public String getType() {
-                        return "Drake";
-                    }
-                }
-    }
-
-    public abstract String getType();
+    public abstract CharacterType getType();
 
     public abstract long getTeamNumber();
 

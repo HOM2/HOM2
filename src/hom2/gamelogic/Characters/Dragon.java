@@ -89,8 +89,8 @@ public class Dragon extends GameCharacter implements Subject {
 		name = n;
 	}
 
-	public String getType() {
-		return characters.Dragon.toString();
+	public CharacterType getType() {
+		return CharacterType.Dragon;
 	}
 
 	public Boolean isBoss() {
