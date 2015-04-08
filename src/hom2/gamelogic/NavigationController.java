@@ -46,6 +46,9 @@ public class NavigationController {
 
     public void move(KeyCode keyCode) {
         GameSettings.Direction d = GameSettings.DIRECTIONS.get(keyCode);
+        if (d == null){
+            return;
+        }
 
         // If get to the boundary, keep place and notify the user
         if (this.gameMap.isDirectonOutOfMap(heroPosition, d)) {

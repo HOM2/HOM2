@@ -70,7 +70,7 @@ public class HOM2 extends Application {
         gameController.gameInit();
         
         MainKeyHandler mainKeyHandler = new MainKeyHandler(navController);
-        scene.setOnKeyPressed(mainKeyHandler);
+        scene.setOnKeyReleased(mainKeyHandler);
         
         stage.show();
         sceneController.initMap();
