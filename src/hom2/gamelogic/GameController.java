@@ -58,7 +58,7 @@ public class GameController {
     public void gameInit() {
         GameCharacter c;
         for (int i = 1; i <= GameSettings.MONSTER_NUMBER; i++) {
-            c = this.characterFactory.makeCharacter(GameSettings.CharacterType.GRAGON_KNIGHT);
+            c = this.characterFactory.makeCharacter(GameCharacter.CharacterType.DRAGON_KNIGHT);
             this.gameMap.addCharacterToRdmPosition(true, c);
         }
 

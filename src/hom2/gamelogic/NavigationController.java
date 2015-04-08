@@ -37,7 +37,7 @@ public class NavigationController {
 
         // Init the hero's position data (in the data store)
         Point center = new Point((int) (GameSettings.getMapGridsX() - 1) / 2 + 1, (int) (GameSettings.getMapGridsY() - 1) / 2 + 1);
-        Warrior hero = (Warrior) characterFactory.makeCharacter(GameSettings.CharacterType.WARRIOR);
+        Warrior hero = (Warrior) characterFactory.makeCharacter(GameCharacter.CharacterType.WARRIOR);
         this.heroPosition = new Position(true, hero);
         this.heroPosition.setPoint(center);
 

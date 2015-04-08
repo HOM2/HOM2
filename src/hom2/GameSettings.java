@@ -47,8 +47,9 @@ public class GameSettings {
     
     public final static double FIGURE_SCALE = 0.6; // to reduce the size of character figure and make fit in the grid easier
     
-    // Character types
-    public static enum CharacterType {WARRIOR, DRAGON, GRAGON_KNIGHT, DRAKE, MINION};
+//    // Character types
+    // Removed, defined in GameCharacter class
+//    public static enum CharacterType {WARRIOR, DRAGON, GRAGON_KNIGHT, DRAKE, MINION};
     
     // Monster numbers
     public final static int MONSTER_NUMBER = 10;

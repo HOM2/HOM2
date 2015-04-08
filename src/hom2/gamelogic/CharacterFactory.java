@@ -21,12 +21,12 @@ public class CharacterFactory {
         this.characterRepo = gc.getCharacterRepo();
     }
 
-    public GameCharacter makeCharacter(GameSettings.CharacterType type) {
+    public GameCharacter makeCharacter(GameCharacter.CharacterType type) {
         GameCharacter characterToAdd = null;
         GameCharacter addedCharacter;
-        if (type == GameSettings.CharacterType.WARRIOR) {
+        if (type == GameCharacter.CharacterType.WARRIOR) {
             characterToAdd = new Warrior();
-        } else if (type == GameSettings.CharacterType.GRAGON_KNIGHT) {
+        } else if (type == GameCharacter.CharacterType.DRAGON_KNIGHT) {
             characterToAdd = new DragonKnight();
         }
 
