@@ -66,7 +66,7 @@ public class DragonKnight extends GameCharacter {
 	public void removeObserverMinion(ObserverMinion o) {}
 	public void notifyObserverMinions() {}
 
-	public boolean isEnemyOf(Character ch) {
+	public boolean isEnemyOf(GameCharacter ch) {
 		String characterType = (ch.getClass()).getSimpleName();
 		if(characterType.equals("Warrior"))
 			return true;

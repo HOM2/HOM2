@@ -60,7 +60,7 @@ public class Drake extends GameCharacter implements ObserverMinion {
     public void notifyObserverMinions() {
     }
 
-    public boolean isEnemyOf(Character ch) {
+    public boolean isEnemyOf(GameCharacter ch) {
         String characterType = (ch.getClass()).getSimpleName();
         if (characterType.equals("Warrior")) {
             return true;

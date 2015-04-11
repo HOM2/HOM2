@@ -61,7 +61,7 @@ public class Dragon extends GameCharacter implements Subject {
 		notifyObserverMinions();
 	}
 
-	public boolean isEnemyOf(Character ch) {
+	public boolean isEnemyOf(GameCharacter ch) {
 		String characterType = (ch.getClass()).getSimpleName();
 		if(characterType.equals("Warrior"))
 			return true;
