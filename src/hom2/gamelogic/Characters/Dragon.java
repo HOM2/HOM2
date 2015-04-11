@@ -56,7 +56,7 @@ public class Dragon extends GameCharacter implements Subject {
 	
 	//When the boss is below a health point threshold, it will summon drakes base on its current health points.
 	//Notify the observer minions
-	public void spawnsDrakes(int hp) { 
+	public void spawnsDrakes(long hp) { 
 		drakeHealthPoints = hp;
 		notifyObserverMinions();
 	}
