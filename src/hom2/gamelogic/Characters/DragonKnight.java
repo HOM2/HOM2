@@ -21,7 +21,7 @@ public class DragonKnight extends GameCharacter {
 	
 	public DragonKnight() { //When a dragon knight is created, it will randomly assign a power up. When user defeats it, they will be able to clam it.
 		Random rand = new Random();
-		int randomNum = rand.nextInt((3 - 1) + 1) + 1;
+		int randomNum = rand.nextInt((5 - 1) + 1) + 1;
 		weaponPowerUpDrop = generateRandomPowerUp(randomNum);
 	}
 	
@@ -32,6 +32,12 @@ public class DragonKnight extends GameCharacter {
 			
 		case 2:
 			return new PowerUpContext(new LifeSteal());
+			
+		case 3:
+			return new PowerUpContext(new Lightning());
+			
+		case 4:
+			return new PowerUpContext(new Gravity());
 			
 		default:
 			return new PowerUpContext(new Ice());
