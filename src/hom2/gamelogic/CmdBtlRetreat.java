@@ -27,6 +27,7 @@ public class CmdBtlRetreat extends CmdBtl{
         this.gameController.btlController.battleEnded = true;
         this.gameController.cmdFactoryScene
                 .createDisplayCommand(CmdSceneDisplay.MsgType.DIALOG, "Retreating...").execute();
+        this.gameController.getSceneController().hideEnemy();
         this.gameController.cmdFactoryNav.createMoveCommand(this.direction).execute();
     }
     

@@ -20,7 +20,9 @@ public class CmdNavMove extends CmdNav {
 
     @Override
     public void execute() {
-        this.gameController.getNavController().move(this.direction);
+        if (this.gameController.getBtlController().isBattleEnded()){
+            this.gameController.getNavController().move(this.direction);
+        }
     }
     
 }

@@ -15,17 +15,23 @@ public class BattleController {
     protected GameController gameController;
     protected boolean battleEnded;
 
+
+
+    public void setDefenderPosition(Position defenderPosition) {
+        this.defenderPosition = defenderPosition;
+    }
+
     protected Position attackerPosition;
     protected Position defenderPosition;
 
     public BattleController(){
-        
+        this.battleEnded =true;
     }
     
     
     public BattleController(GameController gc) {
         this.gameController = gc;
-        this.battleEnded = false;
+        this.battleEnded = true;
         this.attackerPosition = new Position();
         this.attackerPosition = new Position();
     }
@@ -53,6 +59,34 @@ public class BattleController {
     
     public void attack(Position attacker, Position defender){
         
+    }
+    
+        public GameController getGameController() {
+        return gameController;
+    }
+
+    public void setGameController(GameController gameController) {
+        this.gameController = gameController;
+    }
+
+    public boolean isBattleEnded() {
+        return battleEnded;
+    }
+
+    public void setBattleEnded(boolean battleEnded) {
+        this.battleEnded = battleEnded;
+    }
+
+    public Position getAttackerPosition() {
+        return attackerPosition;
+    }
+
+    public void setAttackerPosition(Position attackerPosition) {
+        this.attackerPosition = attackerPosition;
+    }
+
+    public Position getDefenderPosition() {
+        return defenderPosition;
     }
     
     

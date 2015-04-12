@@ -75,6 +75,7 @@ public class NavigationController {
             msg += enemy.getCharacter().getName();
             msg += ".";
             this.gameController.buzz(msg, "Get ready for battle!");
+            this.gameController.getBtlController().setBattleEnded(false);
             
             
         }

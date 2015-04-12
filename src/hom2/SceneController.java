@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.geometry.Side;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
@@ -51,6 +52,8 @@ public class SceneController implements Initializable {
     private Button btn_retreat;
     @FXML
     private ContextMenu menu_retreat;
+    @FXML
+    private ImageView enemy; // the current enemy
 
     // game settings
     private final long STEP_LENGTH = GameSettings.GRID_SIZE;
@@ -264,6 +267,14 @@ public class SceneController implements Initializable {
                 + (position.getPoint().getY() - heroGridY) * GameSettings.GRID_SIZE);
 
         this.pane_characters.getChildren().add(character);
+
+        this.enemy = character;
+    }
+
+    public void hideEnemy() {
+        if (this.enemy != null) {
+            this.pane_characters.getChildren().remove(this.enemy);
+        }
     }
 
 }
