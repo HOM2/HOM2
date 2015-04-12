@@ -60,7 +60,7 @@ public class Drake extends GameCharacter implements ObserverMinion {
     public void notifyObserverMinions() {
     }
 
-    public boolean isEnemyOf(Character ch) {
+    public boolean isEnemyOf(GameCharacter ch) {
         String characterType = (ch.getClass()).getSimpleName();
         if (characterType.equals("Warrior")) {
             return true;
@@ -122,4 +122,6 @@ public class Drake extends GameCharacter implements ObserverMinion {
     public void update(int hp, int minionAP) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public long heal() { return 0; }
 }
