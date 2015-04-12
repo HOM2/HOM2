@@ -8,7 +8,7 @@ public abstract class GameCharacter implements Subject { //Template; implements 
 
     protected int id;
     
-    public abstract boolean isEnemyOf(Character ch);
+    public abstract boolean isEnemyOf(GameCharacter ch);
 
     public abstract void collectWeapon(Weapon w);
 
@@ -19,6 +19,8 @@ public abstract class GameCharacter implements Subject { //Template; implements 
     public abstract long getAttackPower();
 
     public abstract long getHealthIncreasement();
+    
+    public abstract long heal();
 
     public abstract String getName();
 

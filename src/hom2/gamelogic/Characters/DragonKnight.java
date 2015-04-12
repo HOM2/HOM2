@@ -110,4 +110,5 @@ public class DragonKnight extends GameCharacter {
 	public void setTeamNumber(long num) {}
 	public ArrayList<Weapon> collectedPowerUps() { return null; }
 	public String weaponEquippedNames() { return null; }
+        public long heal() { return 0; }
 }

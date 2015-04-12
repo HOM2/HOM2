@@ -107,4 +107,5 @@ public class Dragon extends GameCharacter implements Subject {
 	public String weaponEquippedNames() { return null; }
 	public void collectWeapon(Weapon w) {}
 	public String powerUpDrop() { return null; }
+        public long heal() { return 0; }
 }

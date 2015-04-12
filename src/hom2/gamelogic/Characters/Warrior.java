@@ -38,7 +38,7 @@ public class Warrior extends GameCharacter {
 	public void removeObserverMinion(ObserverMinion o) {}
 	public void notifyObserverMinions() {}
 
-	public boolean isEnemyOf(Character ch) { //Checks if the character is itself, otherwise it is an enemy.
+	public boolean isEnemyOf(GameCharacter ch) { //Checks if the character is itself, otherwise it is an enemy.
 		String characterType = (ch.getClass()).getSimpleName();
 		if(characterType.equals("Warrior"))
 			return false;
@@ -69,6 +69,15 @@ public class Warrior extends GameCharacter {
 	public long getHealthIncreasement() { //Heal the warrior himself
 		return 10;
 	}
+        
+        public long heal() { //heal and calculate the warrior hp himself, returns the current Health Points
+                currentHealthPoints += 10;
+            
+                if(currentHealthPoints >= 100)
+                        currentHealthPoints = 100;
+                
+                return currentHealthPoints;
+        }
 
 	public String getName() { //Returns the name of the character
 		return name;

@@ -122,4 +122,6 @@ public class Drake extends GameCharacter implements ObserverMinion {
     public void update(int hp, int minionAP) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public long heal() { return 0; }
 }
