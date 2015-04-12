@@ -1,4 +1,4 @@
-package btp600Assignment2.Weapons;
+package hom2.gamelogic.Weapons;
 
 public class Gravity extends SwordDecorator implements PowerUpStrategy {
 	

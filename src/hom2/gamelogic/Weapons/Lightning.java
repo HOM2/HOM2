@@ -1,4 +1,4 @@
-package btp600Assignment2.Weapons;
+package hom2.gamelogic.Weapons;
 
 public class Lightning extends SwordDecorator implements PowerUpStrategy {
 	
