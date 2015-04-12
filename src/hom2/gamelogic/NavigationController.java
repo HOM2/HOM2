@@ -4,7 +4,6 @@ import hom2.SceneController;
 import hom2.GameSettings;
 import hom2.gamelogic.Characters.*;
 import java.awt.Point;
-import javafx.scene.input.KeyCode;
 
 /**
  *
@@ -38,21 +37,26 @@ public class NavigationController {
         // Init the hero's position data (in the data store)
         Point center = new Point((int) (GameSettings.getMapGridsX() - 1) / 2 + 1, (int) (GameSettings.getMapGridsY() - 1) / 2 + 1);
         Warrior hero = (Warrior) characterFactory.makeCharacter(GameCharacter.CharacterType.WARRIOR);
+
+        this.gameController.setHero(hero);
+        
         this.heroPosition = new Position(true, hero);
         this.heroPosition.setPoint(center);
 
+        this.gameController.setHeroPosition(heroPosition);
+        
         this.gameMap.getMap().put(center, heroPosition);
     }
 
-    public void move(KeyCode keyCode) {
-        GameSettings.Direction d = GameSettings.DIRECTIONS.get(keyCode);
+    public void move(GameSettings.Direction d) {
+        
         if (d == null){
             return;
         }
 
         // If get to the boundary, keep place and notify the user
         if (this.gameMap.isDirectonOutOfMap(heroPosition, d)) {
-            this.gameController.buzz("Your mind is free but the world is small buddy!");
+            this.gameController.buzz("Your mind is free; but the world is small buddy!");
             return;
         }
 
@@ -60,10 +64,10 @@ public class NavigationController {
         // Check if there is an enemy in the moving-to position
         Position enemy = this.gameController.getGameMap().getNeighbour(heroPosition, d);
 
-        if (enemy == null) {
+        if (enemy == null || !enemy.getCharacter().isAlive()) {
             // If moving to empty space, just move the map and the scene
             updateCharacterPosition(heroPosition, d);
-            this.gameController.cmdFactoryScene.createMoveCommand(keyCode).execute();
+            this.gameController.cmdFactoryScene.createMoveCommand(d).execute();
         }else{
             // If encounter an enemy, initual a battle
             String msg = "";
@@ -103,15 +107,7 @@ public class NavigationController {
             // if the occupant is friendly, do nothing
 
             // if is enemy, fight
-            BattleResult btlResult = btlController.battle(currentPosition, enemy);
-            if (btlResult.isGameOver()) {
-                gameController.gameOver();
-            } else if (btlResult.isRetreat()) { //
-
-            } else if (btlResult.isVictory()) { // Won the battle
-            } else {
-
-            }
+            btlController.battle(currentPosition, enemy);
 
         }
 

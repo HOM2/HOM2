@@ -5,7 +5,9 @@
 package hom2.gamelogic;
 
 import hom2.GameSettings;
+import hom2.gamelogic.Characters.Dragon;
 import hom2.gamelogic.Characters.DragonKnight;
+import hom2.gamelogic.Characters.Drake;
 import hom2.gamelogic.Characters.Warrior;
 import hom2.gamelogic.Characters.GameCharacter;
 
@@ -26,9 +28,11 @@ public class CharacterFactory {
         GameCharacter addedCharacter;
         if (type == GameCharacter.CharacterType.WARRIOR) {
             characterToAdd = new Warrior();
+        } else if (type == GameCharacter.CharacterType.DRAGON) {
+            characterToAdd = new Dragon();
         } else if (type == GameCharacter.CharacterType.DRAGON_KNIGHT) {
             characterToAdd = new DragonKnight();
-        }
+        } 
 
         if (characterToAdd == null) {
             return null;

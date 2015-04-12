@@ -4,23 +4,23 @@
  */
 package hom2.gamelogic;
 
-import javafx.scene.input.KeyCode;
+import hom2.GameSettings;
 
 /**
  *
  * @author Alex
  */
 public class CmdNavMove extends CmdNav {
-    protected KeyCode keycode;
+    protected GameSettings.Direction direction;
     
-    public CmdNavMove(GameController gc, KeyCode kc) {
+    public CmdNavMove(GameController gc, GameSettings.Direction d) {
         this.gameController = gc;
-        this.keycode = kc;
+        this.direction = d;
     }
 
     @Override
     public void execute() {
-        this.gameController.getNavController().move(this.keycode);
+        this.gameController.getNavController().move(this.direction);
     }
     
 }

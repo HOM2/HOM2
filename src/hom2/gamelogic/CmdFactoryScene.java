@@ -5,7 +5,6 @@
 package hom2.gamelogic;
 
 import hom2.GameSettings;
-import javafx.scene.input.KeyCode;
 
 /**
  *
@@ -22,8 +21,11 @@ public class CmdFactoryScene extends CmdFactory {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public CmdSceneMove createMoveCommand(KeyCode kc) {
-        return new CmdSceneMove(this.gameController, GameSettings.DIRECTIONS.get(kc));
+    public CmdSceneMove createMoveCommand(GameSettings.Direction d) {
+        return new CmdSceneMove(this.gameController, d);
     }
 
+    public CmdSceneDisplay createDisplayCommand(CmdSceneDisplay.MsgType t, String msg){
+        return new CmdSceneDisplay(this.gameController, t, msg );
+    }
 }

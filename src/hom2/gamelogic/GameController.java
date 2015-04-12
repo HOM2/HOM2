@@ -31,6 +31,7 @@ public class GameController {
     protected CharacterFactory characterFactory;
 
     protected GameCharacter hero;
+    protected Position heroPosition;
 
     protected CmdFactoryScene cmdFactoryScene;
     protected CmdFactoryNav cmdFactoryNav;
@@ -57,15 +58,26 @@ public class GameController {
     // Init the game, put characters on map
     public void gameInit() {
         GameCharacter c;
-        for (int i = 1; i <= GameSettings.MONSTER_NUMBER; i++) {
-            c = this.characterFactory.makeCharacter(GameCharacter.CharacterType.DRAGON_KNIGHT);
-            this.gameMap.addCharacterToRdmPosition(true, c);
-        }
+        Position p;
+
+        // Make the Dragon
+        c = this.characterFactory.makeCharacter(GameCharacter.CharacterType.DRAGON);
+        p = this.gameMap.addCharacterToRdmPosition(true, c);
+        
+        p.point.setLocation(22,22);
+        this.sceneController.showEnemy(p);
+//
+//        // Make other monsters
+//        for (int i = 2; i <= GameSettings.MONSTER_NUMBER; i++) {
+//            c = this.characterFactory.makeCharacter(GameCharacter.CharacterType.DRAGON_KNIGHT);
+//            p = this.gameMap.addCharacterToRdmPosition(true, c);
+//            this.sceneController.showEnemy(p);
+//        }
 
         String enemyList = "";
         for (Entry<Point, Position> e : this.gameMap.getOccupiedPositions().entrySet()) {
-            enemyList += ("[" + (int)e.getKey().getX() + "," + (int)e.getKey().getY() + "] ");
             enemyList += e.getValue().getCharacter().getName();
+            enemyList += ("[" + (int) e.getKey().getX() + "," + (int) e.getKey().getY() + "] ");
             enemyList += "\n";
         }
 
@@ -159,6 +171,14 @@ public class GameController {
 
     public void setHero(GameCharacter hero) {
         this.hero = hero;
+    }
+
+    public Position getHeroPosition() {
+        return heroPosition;
+    }
+
+    public void setHeroPosition(Position heroPosition) {
+        this.heroPosition = heroPosition;
     }
 
     public CmdFactoryScene getCmdSceneFactory() {

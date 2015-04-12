@@ -19,6 +19,10 @@ public abstract class GameCharacter implements Subject { //Template; implements 
     public abstract long getAttackPower();
 
     public abstract long getHealthIncreasement();
+    
+//    public abstract void heal();
+    // DEBUG: should be replaced when the subclasses implement the abstract heal() method;
+    public void heal(){};
 
     public abstract String getName();
 

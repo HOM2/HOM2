@@ -27,14 +27,13 @@ import javafx.stage.Stage;
 public class HOM2 extends Application {
 
     GameController gameController;
-    
+
     NavigationController navController;
     BattleController btlController;
     SceneController sceneController;
     GameMap gameMap;
     CharacterRepository characterRepo;
     CharacterFactory characterFactory;
-     
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -47,10 +46,6 @@ public class HOM2 extends Application {
 
         stage.setScene(scene);
         stage.setResizable(false);
-        
-        // Pass the ref to the scene controller
-        sceneController.setNavController(navController); 
-        sceneController.setBattleController(btlController); 
 
         // init program; connect the controllers
         this.gameController = new GameController();
@@ -60,18 +55,23 @@ public class HOM2 extends Application {
         this.characterFactory = new CharacterFactory(gameController);
         this.navController = new NavigationController(gameController);
 
+        // Pass the ref to the scene controller
+        sceneController.setGameController(gameController);
+        sceneController.setNavController(navController);
+        sceneController.setBattleController(btlController);
+
         gameController.setSceneController(sceneController);
         gameController.setNavController(navController);
         gameController.setBtlController(btlController);
         gameController.setCharacterRepo(characterRepo);
         gameController.setCharacterFactory(characterFactory);
         gameController.setGameMap(gameMap);
-        
+
         gameController.gameInit();
-        
+
         MainKeyHandler mainKeyHandler = new MainKeyHandler(navController);
         scene.setOnKeyReleased(mainKeyHandler);
-        
+
         stage.show();
         sceneController.initMap();
 
@@ -90,10 +90,10 @@ public class HOM2 extends Application {
         @Override
         public void handle(KeyEvent event) {
             KeyCode keyCode = event.getCode();
-//            navController.move(keyCode);
-            
-            gameController.getCmdFactoryNav().createMoveCommand(keyCode).execute();
-            
+            GameSettings.Direction d = GameSettings.Directions.get(keyCode);
+
+            gameController.getCmdFactoryNav().createMoveCommand(d).execute();
+
             event.consume();
         }
     }

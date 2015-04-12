@@ -32,8 +32,18 @@
                                 </rowConstraints>
                                  <children>
                                     <Button focusTraversable="false" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="Attack" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                    <Button focusTraversable="false" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="Heal" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                    <Button focusTraversable="false" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" text="Retreat" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <Button focusTraversable="false" mnemonicParsing="false" onMouseClicked="#Heal" prefHeight="65.0" prefWidth="65.0" text="Heal" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                    <Button fx:id="btn_retreat" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#showRetreatMenu" prefHeight="65.0" prefWidth="65.0" text="Retreat" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                       <contextMenu>
+                                          <ContextMenu fx:id="menu_retreat">
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" onAction="#retreatUp" text="Move UP" />
+                                                <MenuItem mnemonicParsing="false" onAction="#retreatDown" text="Move Down" />
+                                                <MenuItem mnemonicParsing="false" onAction="#retreatLeft" text="Move Left" />
+                                                <MenuItem mnemonicParsing="false" onAction="#retreatRight" text="Move Right" />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu></Button>
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
@@ -75,7 +85,7 @@
          <center>
                   <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="700.0" style="-fx-background-color: #bbb;" BorderPane.alignment="CENTER">
                       <children>
-                          <Pane prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #333;">
+                          <Pane fx:id="pane_characters" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #333;">
                      <children>
                         <ScrollPane fx:id="mapPane" disable="true" hbarPolicy="NEVER" minHeight="-Infinity" minWidth="-Infinity" opacity="0.5" prefHeight="700.0" prefWidth="700.0" vbarPolicy="NEVER">
                            <content>
@@ -98,7 +108,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextArea disable="true" focusTraversable="false" layoutX="64.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <TextArea fx:id="dialog" editable="false" focusTraversable="false" layoutX="64.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" style="-fx-opacity: 1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children></AnchorPane>
                     </content>
                   </TitledPane>
