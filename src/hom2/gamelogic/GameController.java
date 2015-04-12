@@ -31,7 +31,6 @@ public class GameController {
     protected CharacterFactory characterFactory;
 
     protected GameCharacter hero;
-    protected Position heroPosition;
 
     protected CmdFactoryScene cmdFactoryScene;
     protected CmdFactoryNav cmdFactoryNav;
@@ -58,21 +57,16 @@ public class GameController {
     // Init the game, put characters on map
     public void gameInit() {
         GameCharacter c;
-        Position p;
 
         // Make the Dragon
         c = this.characterFactory.makeCharacter(GameCharacter.CharacterType.DRAGON);
-        p = this.gameMap.addCharacterToRdmPosition(true, c);
-        
-        p.point.setLocation(22,22);
-        this.sceneController.showEnemy(p);
-//
-//        // Make other monsters
-//        for (int i = 2; i <= GameSettings.MONSTER_NUMBER; i++) {
-//            c = this.characterFactory.makeCharacter(GameCharacter.CharacterType.DRAGON_KNIGHT);
-//            p = this.gameMap.addCharacterToRdmPosition(true, c);
-//            this.sceneController.showEnemy(p);
-//        }
+        this.gameMap.addCharacterToRdmPosition(true, c);
+
+        // Make other monsters
+        for (int i = 2; i <= GameSettings.MONSTER_NUMBER; i++) {
+            c = this.characterFactory.makeCharacter(GameCharacter.CharacterType.DRAGON_KNIGHT);
+            this.gameMap.addCharacterToRdmPosition(true, c);
+        }
 
         String enemyList = "";
         for (Entry<Point, Position> e : this.gameMap.getOccupiedPositions().entrySet()) {
@@ -174,11 +168,7 @@ public class GameController {
     }
 
     public Position getHeroPosition() {
-        return heroPosition;
-    }
-
-    public void setHeroPosition(Position heroPosition) {
-        this.heroPosition = heroPosition;
+        return navController.heroPosition;
     }
 
     public CmdFactoryScene getCmdSceneFactory() {

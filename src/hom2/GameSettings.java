@@ -85,7 +85,7 @@ public class GameSettings {
 //    public static enum CharacterType {WARRIOR, DRAGON, GRAGON_KNIGHT, DRAKE, MINION};
     
     // Monster numbers
-    public final static int MONSTER_NUMBER = 30;
+    public final static int MONSTER_NUMBER = 15;
 
     // Animations
     public final static double CHARACTER_ANIMATION_DURATION = 100;

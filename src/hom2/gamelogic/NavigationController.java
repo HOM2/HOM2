@@ -43,7 +43,6 @@ public class NavigationController {
         this.heroPosition = new Position(true, hero);
         this.heroPosition.setPoint(center);
 
-        this.gameController.setHeroPosition(heroPosition);
         
         this.gameMap.getMap().put(center, heroPosition);
     }
@@ -70,11 +69,13 @@ public class NavigationController {
             this.gameController.cmdFactoryScene.createMoveCommand(d).execute();
         }else{
             // If encounter an enemy, initual a battle
+            gameController.getSceneController().showEnemy(enemy);
             String msg = "";
             msg += "Encounter with enemy ";
             msg += enemy.getCharacter().getName();
             msg += ".";
             this.gameController.buzz(msg, "Get ready for battle!");
+            
             
         }
 
