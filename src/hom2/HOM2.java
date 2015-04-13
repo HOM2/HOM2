@@ -60,6 +60,11 @@ public class HOM2 extends Application {
         sceneController.setNavController(navController);
         sceneController.setBattleController(btlController);
 
+        // Pass the ref to the scene controller
+        sceneController.setGameController(gameController);
+        sceneController.setNavController(navController);
+        sceneController.setBattleController(btlController);
+
         gameController.setSceneController(sceneController);
         gameController.setNavController(navController);
         gameController.setBtlController(btlController);
