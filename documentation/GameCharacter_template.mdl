@@ -142,6 +142,12 @@
 			abstract   	TRUE
 			opExportControl 	"Public"
 			uid        	0)
+		    (object Operation "heal"
+			quid       	"552AF8F8012C"
+			result     	"Long"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
 		    (object Operation "getName"
 			quid       	"551C73A900E7"
 			result     	"String"
@@ -333,6 +339,12 @@
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)
+		    (object Operation "heal"
+			quid       	"552AF92E01C1"
+			result     	"Long"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
 		    (object Operation "getName"
 			quid       	"5529A8BA01CB"
 			result     	"String"
@@ -497,6 +509,12 @@
 			uid        	0)
 		    (object Operation "getHealthIncreasement"
 			quid       	"5529AEF80377"
+			result     	"Long"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "heal"
+			quid       	"552AF92100FA"
 			result     	"Long"
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
@@ -691,6 +709,12 @@
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)
+		    (object Operation "heal"
+			quid       	"552AF91500B6"
+			result     	"Long"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
 		    (object Operation "setName"
 			quid       	"5529AE180259"
 			parameters 	(list Parameters
@@ -874,6 +898,12 @@
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)
+		    (object Operation "health"
+			quid       	"552AF90801A2"
+			result     	"Long"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
 		    (object Operation "setName"
 			quid       	"5529B13E0104"
 			parameters 	(list Parameters
@@ -1006,10 +1036,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@1
-			    location   	(1446, 169)
+			    location   	(1463, 111)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	816
+			    max_width  	782
 			    justify    	0
 			    label      	"GameCharacter")
 			icon_style 	"Icon"
@@ -1018,7 +1048,7 @@
 			quidu      	"551C6CDE0017"
 			compartment 	(object Compartment
 			    Parent_View 	@1
-			    location   	(1446, 230)
+			    location   	(1463, 170)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1031,11 +1061,11 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	22
-			    max_width  	926
+			    nlines     	23
+			    max_width  	779
 			    justify    	1)
-			width      	834
-			height     	1186
+			width      	800
+			height     	1302
 			annotation 	8
 			autoResize 	TRUE)
 		    (object NoteView @2
@@ -1078,10 +1108,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@3
-			    location   	(3817, 303)
+			    location   	(3839, 313)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	826
+			    max_width  	782
 			    justify    	0
 			    label      	"Warrior")
 			icon_style 	"Icon"
@@ -1090,7 +1120,7 @@
 			quidu      	"551C6E1B01A7"
 			compartment 	(object Compartment
 			    Parent_View 	@3
-			    location   	(3817, 362)
+			    location   	(3839, 372)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1103,11 +1133,11 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	32
-			    max_width  	926
+			    nlines     	33
+			    max_width  	779
 			    justify    	1)
-			width      	844
-			height     	1686
+			width      	800
+			height     	1666
 			annotation 	8
 			autoResize 	TRUE)
 		    (object AttachView "" @4
@@ -1117,7 +1147,7 @@
 			supplier   	@1
 			vertices   	(list Points
 			    (1029, 356)
-			    (1436, 549))
+			    (1453, 557))
 			line_style 	0)
 		    (object InheritView "" @5
 			stereotype 	TRUE
@@ -1126,8 +1156,8 @@
 			client     	@3
 			supplier   	@1
 			vertices   	(list Points
-			    (3807, 1065)
-			    (2271, 817))
+			    (3829, 1068)
+			    (2254, 814))
 			line_style 	0)
 		    (object NoteView @6
 			location   	(2235, 1545)
@@ -1159,7 +1189,7 @@
 			supplier   	@3
 			vertices   	(list Points
 			    (2485, 1492)
-			    (3807, 1219))
+			    (3829, 1214))
 			line_style 	0)
 		    (object ClassView "Class" "Logical View::Dragon" @8
 			ShowCompartmentStereotypes 	TRUE
@@ -1178,10 +1208,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@8
-			    location   	(2745, 1430)
+			    location   	(2770, 1438)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	876
+			    max_width  	826
 			    justify    	0
 			    label      	"Dragon")
 			icon_style 	"Icon"
@@ -1190,7 +1220,7 @@
 			quidu      	"5529A9B30099"
 			compartment 	(object Compartment
 			    Parent_View 	@8
-			    location   	(2745, 1489)
+			    location   	(2770, 1497)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1203,11 +1233,11 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	30
-			    max_width  	977
+			    nlines     	31
+			    max_width  	823
 			    justify    	1)
-			width      	894
-			height     	1586
+			width      	844
+			height     	1570
 			annotation 	8
 			autoResize 	TRUE)
 		    (object ClassView "Class" "Logical View::DragonKnight" @9
@@ -1227,10 +1257,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@9
-			    location   	(1240, 1746)
+			    location   	(1290, 1753)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	1306
+			    max_width  	1206
 			    justify    	0
 			    label      	"DragonKnight")
 			icon_style 	"Icon"
@@ -1239,7 +1269,7 @@
 			quidu      	"5529A9B300AF"
 			compartment 	(object Compartment
 			    Parent_View 	@9
-			    location   	(1240, 1805)
+			    location   	(1290, 1812)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1252,11 +1282,11 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	29
-			    max_width  	1485
+			    nlines     	30
+			    max_width  	1203
 			    justify    	1)
-			width      	1324
-			height     	1536
+			width      	1224
+			height     	1522
 			annotation 	8
 			autoResize 	TRUE)
 		    (object ClassView "Class" "Logical View::Drake" @10
@@ -1276,10 +1306,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@10
-			    location   	(294, 503)
+			    location   	(317, 511)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	828
+			    max_width  	782
 			    justify    	0
 			    label      	"Drake")
 			icon_style 	"Icon"
@@ -1288,7 +1318,7 @@
 			quidu      	"5529A9B300C4"
 			compartment 	(object Compartment
 			    Parent_View 	@10
-			    location   	(294, 564)
+			    location   	(317, 570)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1301,11 +1331,11 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	30
-			    max_width  	926
+			    nlines     	31
+			    max_width  	779
 			    justify    	1)
-			width      	846
-			height     	1586
+			width      	800
+			height     	1570
 			annotation 	8
 			autoResize 	TRUE)
 		    (object InheritView "" @11
@@ -1315,8 +1345,8 @@
 			client     	@9
 			supplier   	@1
 			vertices   	(list Points
-			    (1874, 1733)
-			    (1865, 1343))
+			    (1875, 1740)
+			    (1867, 1401))
 			line_style 	0)
 		    (object InheritView "" @12
 			stereotype 	TRUE
@@ -1325,8 +1355,8 @@
 			client     	@8
 			supplier   	@1
 			vertices   	(list Points
-			    (2735, 1718)
-			    (2271, 1208))
+			    (2760, 1746)
+			    (2254, 1189))
 			line_style 	0)
 		    (object InheritView "" @13
 			stereotype 	TRUE
@@ -1335,8 +1365,8 @@
 			client     	@10
 			supplier   	@1
 			vertices   	(list Points
-			    (1131, 1085)
-			    (1436, 943))
+			    (1108, 1095)
+			    (1453, 935))
 			line_style 	0)
 		    (object AttachView "" @14
 			stereotype 	TRUE
@@ -1344,7 +1374,7 @@
 			client     	@10
 			supplier   	@6
 			vertices   	(list Points
-			    (1131, 1356)
+			    (1108, 1352)
 			    (1984, 1501))
 			line_style 	0)
 		    (object AttachView "" @15
@@ -1353,7 +1383,7 @@
 			client     	@9
 			supplier   	@6
 			vertices   	(list Points
-			    (2166, 1733)
+			    (2163, 1740)
 			    (2204, 1626))
 			line_style 	0)
 		    (object AttachView "" @16
@@ -1362,7 +1392,7 @@
 			client     	@8
 			supplier   	@6
 			vertices   	(list Points
-			    (2735, 1895)
+			    (2760, 1913)
 			    (2351, 1626))
 			line_style 	0)))))
     root_subsystem 	(object SubSystem "Component View"
@@ -3013,7 +3043,7 @@
 		    (object Attribute
 			tool       	"Java"
 			name       	"ClassPath"
-			value      	".;.\\classes;C:\\Program Files\\Java\\jdk1.7.0_07\\jre\\lib\\rt.jar;C:\\Program Files\\Java\\jdk1.7.0_07\\lib\\dt.jar;C:\\Program Files\\Java\\jdk1.7.0_07\\lib\\tools.jar")
+			value      	".;.\\classes;C:\\Program Files\\Java\\jdk1.7.0_07\\jre\\lib\\rt.jar;C:\\Program Files\\Java\\jdk1.7.0_07\\lib\\dt.jar;C:\\Program Files\\Java\\jdk1.7.0_07\\lib\\tools.jar;C:\\Program Files\\Java\\jdk1.8.0_40\\jre\\lib\\rt.jar;C:\\Program Files\\Java\\jdk1.8.0_40\\lib\\dt.jar;C:\\Program Files\\Java\\jdk1.8.0_40\\lib\\tools.jar")
 		    (object Attribute
 			tool       	"Java"
 			name       	"ReferenceClasspath"

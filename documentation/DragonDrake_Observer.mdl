@@ -11,7 +11,43 @@
 	(object Attribute
 	    tool       	"Java"
 	    name       	"IDE"
-	    value      	"Internal Editor"))
+	    value      	"Internal Editor")
+	(object Attribute
+	    tool       	"Java"
+	    name       	"UserDefineTagName1"
+	    value      	"")
+	(object Attribute
+	    tool       	"Java"
+	    name       	"UserDefineTagText1"
+	    value      	"")
+	(object Attribute
+	    tool       	"Java"
+	    name       	"UserDefineTagApply1"
+	    value      	"")
+	(object Attribute
+	    tool       	"Java"
+	    name       	"UserDefineTagName2"
+	    value      	"")
+	(object Attribute
+	    tool       	"Java"
+	    name       	"UserDefineTagText2"
+	    value      	"")
+	(object Attribute
+	    tool       	"Java"
+	    name       	"UserDefineTagApply2"
+	    value      	"")
+	(object Attribute
+	    tool       	"Java"
+	    name       	"UserDefineTagName3"
+	    value      	"")
+	(object Attribute
+	    tool       	"Java"
+	    name       	"UserDefineTagText3"
+	    value      	"")
+	(object Attribute
+	    tool       	"Java"
+	    name       	"UserDefineTagApply3"
+	    value      	""))
     quid       	"5529BA2B01BC"
     enforceClosureAutoLoad 	FALSE
     defaults   	(object defaults
@@ -126,6 +162,12 @@
 			uid        	0)
 		    (object Operation "getHealthIncreasement"
 			quid       	"5529BA4C0127"
+			result     	"Long"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "heal"
+			quid       	"552AFA38001B"
 			result     	"Long"
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
@@ -327,6 +369,12 @@
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)
+		    (object Operation "heal"
+			quid       	"552AFA430078"
+			result     	"Long"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
 		    (object Operation "setName"
 			quid       	"5529BA4C0156"
 			parameters 	(list Parameters
@@ -431,7 +479,8 @@
 			type       	"Boolean")
 		    (object ClassAttribute "dragonStats"
 			quid       	"5529BA4C016E"
-			type       	"Subject")))
+			type       	"Subject"
+			quidu      	"5529BA8001A4")))
 	    (object Class "Subject"
 		quid       	"5529BA8001A4"
 		operations 	(list Operations
@@ -489,7 +538,7 @@
 		max_height 	28350
 		max_width  	21600
 		origin_x   	0
-		origin_y   	0
+		origin_y   	1188
 		items      	(list diagram_item_list
 		    (object ClassView "Class" "Logical View::Dragon" @1
 			ShowCompartmentStereotypes 	TRUE
@@ -508,10 +557,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@1
-			    location   	(507, 620)
+			    location   	(512, 595)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	876
+			    max_width  	866
 			    justify    	0
 			    label      	"Dragon")
 			icon_style 	"Icon"
@@ -520,7 +569,7 @@
 			quidu      	"5529BA4C011A"
 			compartment 	(object Compartment
 			    Parent_View 	@1
-			    location   	(507, 681)
+			    location   	(512, 656)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -533,11 +582,11 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	30
-			    max_width  	875
+			    nlines     	31
+			    max_width  	862
 			    justify    	1)
-			width      	894
-			height     	1586
+			width      	884
+			height     	1636
 			annotation 	8
 			autoResize 	TRUE)
 		    (object ClassView "Class" "Logical View::Drake" @2
@@ -557,10 +606,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@2
-			    location   	(1833, 575)
+			    location   	(1838, 550)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	828
+			    max_width  	818
 			    justify    	0
 			    label      	"Drake")
 			icon_style 	"Icon"
@@ -569,7 +618,7 @@
 			quidu      	"5529BA4C0144"
 			compartment 	(object Compartment
 			    Parent_View 	@2
-			    location   	(1833, 636)
+			    location   	(1838, 611)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -582,11 +631,11 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	30
-			    max_width  	828
+			    nlines     	31
+			    max_width  	815
 			    justify    	1)
-			width      	846
-			height     	1586
+			width      	836
+			height     	1636
 			annotation 	8
 			autoResize 	TRUE)
 		    (object NoteView @3
@@ -642,7 +691,7 @@
 			supplier   	@1
 			vertices   	(list Points
 			    (361, 972)
-			    (497, 1072))
+			    (502, 1076))
 			line_style 	0)
 		    (object NoteView @6
 			location   	(3057, 321)
@@ -667,75 +716,7 @@
 			fill_color 	13434879
 			width      	388
 			height     	138)
-		    (object ClassView "Class" "Logical View::Subject" @7
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			ShowOperationSignature 	TRUE
-			location   	(939, 291)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@7
-			    location   	(599, 160)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	680
-			    justify    	0
-			    label      	"Subject")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5529BA8001A4"
-			compartment 	(object Compartment
-			    Parent_View 	@7
-			    location   	(599, 221)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	4
-			    max_width  	690
-			    justify    	1)
-			width      	698
-			height     	286
-			annotation 	8
-			autoResize 	TRUE)
-		    (object AttachView "" @8
-			stereotype 	TRUE
-			line_color 	3342489
-			client     	@3
-			supplier   	@7
-			vertices   	(list Points
-			    (426, 304)
-			    (589, 300))
-			line_style 	0)
-		    (object InheritView "" @9
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5529BB420038"
-			client     	@1
-			supplier   	@7
-			vertices   	(list Points
-			    (940, 607)
-			    (939, 434))
-			line_style 	0)
-		    (object ClassView "Class" "Logical View::ObserverMinion" @10
+		    (object ClassView "Class" "Logical View::ObserverMinion" @7
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -751,7 +732,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@10
+			    Parent_View 	@7
 			    location   	(1909, 231)
 			    fill_color 	13434879
 			    nlines     	1
@@ -763,7 +744,7 @@
 			fill_color 	13434879
 			quidu      	"5529BB620306"
 			compartment 	(object Compartment
-			    Parent_View 	@10
+			    Parent_View 	@7
 			    location   	(1909, 292)
 			    font       	(object Font
 				size       	10
@@ -784,14 +765,82 @@
 			height     	186
 			annotation 	8
 			autoResize 	TRUE)
-		    (object AttachView "" @11
+		    (object AttachView "" @8
 			stereotype 	TRUE
 			line_color 	3342489
-			client     	@10
+			client     	@7
 			supplier   	@6
 			vertices   	(list Points
 			    (2564, 315)
 			    (2862, 318))
+			line_style 	0)
+		    (object ClassView "Class" "Logical View::Subject" @9
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			ShowOperationSignature 	TRUE
+			location   	(939, 291)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@9
+			    location   	(599, 160)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	680
+			    justify    	0
+			    label      	"Subject")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5529BA8001A4"
+			compartment 	(object Compartment
+			    Parent_View 	@9
+			    location   	(599, 221)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	4
+			    max_width  	690
+			    justify    	1)
+			width      	698
+			height     	286
+			annotation 	8
+			autoResize 	TRUE)
+		    (object AttachView "" @10
+			stereotype 	TRUE
+			line_color 	3342489
+			client     	@3
+			supplier   	@9
+			vertices   	(list Points
+			    (426, 304)
+			    (589, 300))
+			line_style 	0)
+		    (object InheritView "" @11
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5529BB420038"
+			client     	@1
+			supplier   	@9
+			vertices   	(list Points
+			    (940, 582)
+			    (939, 434))
 			line_style 	0)
 		    (object AssociationViewNew "$UNNAMED$0" @12
 			location   	(1593, 300)
@@ -815,7 +864,7 @@
 				line_color 	3342489
 				quidu      	"5529BBE6033E"
 				client     	@12
-				supplier   	@10
+				supplier   	@7
 				vertices   	(list Points
 				    (1593, 300)
 				    (1899, 305))
@@ -827,10 +876,10 @@
 				line_color 	3342489
 				quidu      	"5529BBE60340"
 				client     	@12
-				supplier   	@7
+				supplier   	@9
 				vertices   	(list Points
 				    (1593, 300)
-				    (1288, 296))
+				    (1288, 295))
 				line_style 	0)))
 		    (object NoteView @15
 			location   	(3093, 1035)
@@ -862,16 +911,16 @@
 			supplier   	@2
 			vertices   	(list Points
 			    (2942, 1091)
-			    (2670, 1195))
+			    (2665, 1196))
 			line_style 	0)
 		    (object InheritView "" @17
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5529BC460111"
 			client     	@2
-			supplier   	@10
+			supplier   	@7
 			vertices   	(list Points
-			    (2234, 562)
+			    (2234, 537)
 			    (2232, 405))
 			line_style 	0)))))
     root_subsystem 	(object SubSystem "Component View"
@@ -2522,7 +2571,7 @@
 		    (object Attribute
 			tool       	"Java"
 			name       	"ClassPath"
-			value      	".;.\\classes;C:\\Program Files\\Java\\jdk1.7.0_07\\jre\\lib\\rt.jar;C:\\Program Files\\Java\\jdk1.7.0_07\\lib\\dt.jar;C:\\Program Files\\Java\\jdk1.7.0_07\\lib\\tools.jar")
+			value      	".;.\\classes;C:\\Program Files\\Java\\jdk1.7.0_07\\jre\\lib\\rt.jar;C:\\Program Files\\Java\\jdk1.7.0_07\\lib\\dt.jar;C:\\Program Files\\Java\\jdk1.7.0_07\\lib\\tools.jar;C:\\Program Files\\Java\\jdk1.8.0_40\\jre\\lib\\rt.jar;C:\\Program Files\\Java\\jdk1.8.0_40\\lib\\dt.jar;C:\\Program Files\\Java\\jdk1.8.0_40\\lib\\tools.jar")
 		    (object Attribute
 			tool       	"Java"
 			name       	"ReferenceClasspath"
