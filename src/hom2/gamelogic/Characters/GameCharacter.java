@@ -8,7 +8,7 @@ public abstract class GameCharacter implements Subject { //Template; implements 
 
     protected int id;
     
-    public abstract boolean isEnemyOf(Character ch);
+    public abstract boolean isEnemyOf(GameCharacter ch);
 
     public abstract void collectWeapon(Weapon w);
 
@@ -19,36 +19,16 @@ public abstract class GameCharacter implements Subject { //Template; implements 
     public abstract long getAttackPower();
 
     public abstract long getHealthIncreasement();
+    
+    public abstract long heal();
 
     public abstract String getName();
 
     public abstract void setName(String n);
 
-    public enum characters { //Not sure how you want the enum
+    public static enum CharacterType { WARRIOR, DRAGON, DRAGON_KNIGHT, DRAKES }
 
-        Warrior {
-                    public String getType() {
-                        return "Warrior";
-                    }
-                },
-        Dragon {
-                    public String getType() {
-                        return "Dragon";
-                    }
-                },
-        DragonKnight {
-                    public String getType() {
-                        return "Dragon Knight";
-                    }
-                },
-        Drakes {
-                    public String getType() {
-                        return "Drake";
-                    }
-                }
-    }
-
-    public abstract String getType();
+    public abstract CharacterType getType();
 
     public abstract long getTeamNumber();
 
@@ -67,7 +47,7 @@ public abstract class GameCharacter implements Subject { //Template; implements 
     public abstract String powerUpDrop();
 
     // Added by Yiqi. Required.
-    // A character need an Id, to implement the Repository pattern
+    // A character needs an Id, to implement the Repository pattern
     public int getId() {
         return this.id;
     }

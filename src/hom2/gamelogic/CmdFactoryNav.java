@@ -4,7 +4,7 @@
  */
 package hom2.gamelogic;
 
-import javafx.scene.input.KeyCode;
+import hom2.GameSettings;
 
 /**
  *
@@ -21,7 +21,7 @@ public class CmdFactoryNav extends CmdFactory{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public CmdNavMove createMoveCommand(KeyCode kc){
-        return new CmdNavMove(this.gameController, kc);
+    public CmdNavMove createMoveCommand(GameSettings.Direction d){
+        return new CmdNavMove(this.gameController, d);
     }
 }

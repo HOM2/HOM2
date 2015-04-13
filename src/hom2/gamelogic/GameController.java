@@ -31,6 +31,7 @@ public class GameController {
     protected CharacterFactory characterFactory;
 
     protected GameCharacter hero;
+    protected GameCharacter enemy;
 
     protected CmdFactoryScene cmdFactoryScene;
     protected CmdFactoryNav cmdFactoryNav;
@@ -57,15 +58,21 @@ public class GameController {
     // Init the game, put characters on map
     public void gameInit() {
         GameCharacter c;
-        for (int i = 1; i <= GameSettings.MONSTER_NUMBER; i++) {
-            c = this.characterFactory.makeCharacter(GameSettings.CharacterType.GRAGON_KNIGHT);
+
+        // Make the Dragon
+        c = this.characterFactory.makeCharacter(GameCharacter.CharacterType.DRAGON);
+        this.gameMap.addCharacterToRdmPosition(true, c);
+
+        // Make other monsters
+        for (int i = 2; i <= GameSettings.MONSTER_NUMBER; i++) {
+            c = this.characterFactory.makeCharacter(GameCharacter.CharacterType.DRAGON_KNIGHT);
             this.gameMap.addCharacterToRdmPosition(true, c);
         }
 
         String enemyList = "";
         for (Entry<Point, Position> e : this.gameMap.getOccupiedPositions().entrySet()) {
-            enemyList += ("[" + (int)e.getKey().getX() + "," + (int)e.getKey().getY() + "] ");
             enemyList += e.getValue().getCharacter().getName();
+            enemyList += ("[" + (int) e.getKey().getX() + "," + (int) e.getKey().getY() + "] ");
             enemyList += "\n";
         }
 
@@ -73,9 +80,10 @@ public class GameController {
                 CmdSceneDisplay.MsgType.BG_INFO,
                 enemyList);
         cmdSD.execute();
+
     }
 
-    // Notification 
+    // msg box
     public void buzz(String title, String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -159,6 +167,18 @@ public class GameController {
 
     public void setHero(GameCharacter hero) {
         this.hero = hero;
+    }
+
+    public GameCharacter getEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(GameCharacter enemy) {
+        this.enemy = enemy;
+    }
+
+    public Position getHeroPosition() {
+        return navController.heroPosition;
     }
 
     public CmdFactoryScene getCmdSceneFactory() {

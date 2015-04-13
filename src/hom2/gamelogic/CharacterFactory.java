@@ -5,7 +5,9 @@
 package hom2.gamelogic;
 
 import hom2.GameSettings;
+import hom2.gamelogic.Characters.Dragon;
 import hom2.gamelogic.Characters.DragonKnight;
+import hom2.gamelogic.Characters.Drake;
 import hom2.gamelogic.Characters.Warrior;
 import hom2.gamelogic.Characters.GameCharacter;
 
@@ -21,14 +23,16 @@ public class CharacterFactory {
         this.characterRepo = gc.getCharacterRepo();
     }
 
-    public GameCharacter makeCharacter(GameSettings.CharacterType type) {
+    public GameCharacter makeCharacter(GameCharacter.CharacterType type) {
         GameCharacter characterToAdd = null;
         GameCharacter addedCharacter;
-        if (type == GameSettings.CharacterType.WARRIOR) {
+        if (type == GameCharacter.CharacterType.WARRIOR) {
             characterToAdd = new Warrior();
-        } else if (type == GameSettings.CharacterType.GRAGON_KNIGHT) {
+        } else if (type == GameCharacter.CharacterType.DRAGON) {
+            characterToAdd = new Dragon();
+        } else if (type == GameCharacter.CharacterType.DRAGON_KNIGHT) {
             characterToAdd = new DragonKnight();
-        }
+        } 
 
         if (characterToAdd == null) {
             return null;

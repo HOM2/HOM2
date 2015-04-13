@@ -56,12 +56,12 @@ public class Dragon extends GameCharacter implements Subject {
 	
 	//When the boss is below a health point threshold, it will summon drakes base on its current health points.
 	//Notify the observer minions
-	public void spawnsDrakes(int hp) { 
+	public void spawnsDrakes(long hp) { 
 		drakeHealthPoints = hp;
 		notifyObserverMinions();
 	}
 
-	public boolean isEnemyOf(Character ch) {
+	public boolean isEnemyOf(GameCharacter ch) {
 		String characterType = (ch.getClass()).getSimpleName();
 		if(characterType.equals("Warrior"))
 			return true;
@@ -89,8 +89,8 @@ public class Dragon extends GameCharacter implements Subject {
 		name = n;
 	}
 
-	public String getType() {
-		return characters.Dragon.toString();
+	public CharacterType getType() {
+		return CharacterType.DRAGON;
 	}
 
 	public Boolean isBoss() {
@@ -107,4 +107,5 @@ public class Dragon extends GameCharacter implements Subject {
 	public String weaponEquippedNames() { return null; }
 	public void collectWeapon(Weapon w) {}
 	public String powerUpDrop() { return null; }
+        public long heal() { return 0; }
 }

@@ -9,6 +9,7 @@ import hom2.Helpers;
 import hom2.gamelogic.Characters.GameCharacter;
 import java.awt.Point;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -33,37 +34,86 @@ public class GameMap {
         this.gameController = gc;
     }
 
-    // Put a character on a position
-    public Position addCharacterToRdmPosition( boolean isVisible, GameCharacter c) {
+    // Put a character on a random position
+    public Position addCharacterToRdmPosition(boolean isVisible, GameCharacter c) {
         if (c == null) {
             return null;
         }
 
         // Generate a random new point
-        
         boolean isNewPoint = false;
-        Point newPoint = new Point(0,0);
+        Point newPoint = new Point(0, 0);
 
         int totalGrids = (int) (GameSettings.getMapGridsX() * GameSettings.getMapGridsY());
-        
-        for (int i =1; i<= totalGrids && !isNewPoint; i++) {
+
+        for (int i = 1; i <= totalGrids && !isNewPoint; i++) {
             int x = Helpers.randInt(1, (int) GameSettings.getMapGridsX());
             int y = Helpers.randInt(1, (int) GameSettings.getMapGridsY());
-            newPoint.setLocation(x,y);
-            if (!this.occupiedPositions.containsKey(newPoint)){
+            newPoint.setLocation(x, y);
+            if (!this.occupiedPositions.containsKey(newPoint)) {
                 isNewPoint = true;
             }
         }
-        
-        if (!isNewPoint){// If the map is full
+
+        if (!isNewPoint) {// If the map is full
             return null;
-        }else{
+        } else {
             Position newPosition = new Position(isVisible, c);
             newPosition.setPoint(newPoint);
             this.getMap().put(newPoint, newPosition);
             return newPosition;
         }
-        
+
+    }
+
+    // Get the neighbouring positions
+    public LinkedList<Position> getNeighbours(Position p) {
+        LinkedList<Position> neighbours = new LinkedList<>();
+
+        if (p == null) {
+            return null;
+        }
+
+        Point newPoint = new Point(0, 0);
+        Position checkedPosition;
+
+        //DOWN
+        newPoint.setLocation(p.getPoint().getX(), p.getPoint().getY() + 1);
+        checkedPosition = this.getMap().get(newPoint);
+        if (checkedPosition != null) {
+            if (checkedPosition.getCharacter().isAlive()) {
+                neighbours.add(checkedPosition);
+            }
+        }
+
+        //UP
+        newPoint.setLocation(p.getPoint().getX(), p.getPoint().getY() - 1);
+        checkedPosition = this.getMap().get(newPoint);
+        if (checkedPosition != null) {
+            if (checkedPosition.getCharacter().isAlive()) {
+                neighbours.add(checkedPosition);
+            }
+        }
+
+        //LEFT
+        newPoint.setLocation(p.getPoint().getX() - 1, p.getPoint().getY());
+        checkedPosition = this.getMap().get(newPoint);
+        if (checkedPosition != null) {
+            if (checkedPosition.getCharacter().isAlive()) {
+                neighbours.add(checkedPosition);
+            }
+        }
+
+        //RIGHT
+        newPoint.setLocation(p.getPoint().getX() + 1, p.getPoint().getY());
+        checkedPosition = this.getMap().get(newPoint);
+        if (checkedPosition != null) {
+            if (checkedPosition.getCharacter().isAlive()) {
+                neighbours.add(checkedPosition);
+            }
+        }
+
+        return neighbours;
     }
 
     // Get the neighbouring position
